@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Piatti#newInstance} factory method to
+ * Use the {@link FragmentContatti#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Piatti extends Fragment {
+public class FragmentContatti extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class Piatti extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Piatti() {
+    public FragmentContatti() {
         // Required empty public constructor
     }
 
@@ -34,11 +34,11 @@ public class Piatti extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Page2Fragment.
+     * @return A new instance of fragment Page4Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Piatti newInstance(String param1, String param2) {
-        Piatti fragment = new Piatti();
+    public static FragmentContatti newInstance(String param1, String param2) {
+        FragmentContatti fragment = new FragmentContatti();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,8 +59,8 @@ public class Piatti extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view = inflater.inflate(R.layout.piatti, container, false);
-       //Inserire codice qua per fare cose
-       return view;
+       View view = inflater.inflate(R.layout.contatti, container, false);
+        //Inserire codice per fare cose qua
+        return view;
     }
 }

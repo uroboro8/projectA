@@ -19,13 +19,13 @@ public class CustomPagerAdapter extends FragmentStateAdapter {
         switch (position)
         {
             case 0:
-                return new Home();
+                return new FragmentHome();
             case 1:
-                return new Piatti();
+                return new FragmentPiatti();
             case 2:
-                return new Itinerari();
+                return new FragmentItinerari();
             case 3:
-                return new Contatti();
+                return new FragmentContatti();
             default:
                 return null;
         }
