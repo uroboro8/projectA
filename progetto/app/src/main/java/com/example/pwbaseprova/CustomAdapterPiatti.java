@@ -45,7 +45,11 @@ public class CustomAdapterPiatti extends RecyclerView.Adapter<CustomAdapterPiatt
         textView.setText(piatto.getName());
 
         ImageView imageView = holder.itemImage;
-        Picasso.get().load(piatto.getImage()).into(imageView);
+        Log.e("image",piatto.getImage());
+        if(piatto.getImage().trim().length() == 0)
+            Picasso.get().load("https://www.mrw.it/img/cope/0iwkf4_1609360688.jpg").into(imageView);
+        else
+            Picasso.get().load(piatto.getImage()).into(imageView);
     }
 
     @Override
