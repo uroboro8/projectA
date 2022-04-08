@@ -1,8 +1,11 @@
 package com.example.pwbaseprova.piatti;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Piatto {
+public class Piatto implements Parcelable {
 
     @SerializedName("id")
     private int id;
@@ -18,6 +21,26 @@ public class Piatto {
 
     @SerializedName("description")
     private String description;
+
+    protected Piatto(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        type = in.readString();
+        image = in.readString();
+        description = in.readString();
+    }
+
+    public static final Creator<Piatto> CREATOR = new Creator<Piatto>() {
+        @Override
+        public Piatto createFromParcel(Parcel in) {
+            return new Piatto(in);
+        }
+
+        @Override
+        public Piatto[] newArray(int size) {
+            return new Piatto[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -64,5 +87,19 @@ public class Piatto {
                 ", image='" + image + '\'' + "\n" +
                 ", description='" + description + '\'' + "\n" +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(type);
+        parcel.writeString(image);
+        parcel.writeString(description);
     }
 }

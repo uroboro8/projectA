@@ -1,9 +1,13 @@
 package com.example.pwbaseprova;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +33,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FragmentPiatti extends Fragment {
 
     ArrayList<Piatto> piattiArrayList;
+
+    RecyclerView recyclerView;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -75,6 +82,9 @@ public class FragmentPiatti extends Fragment {
         // Inflate the layout for this fragment
        View view = inflater.inflate(R.layout.piatti, container, false);
 
+       recyclerView = view.findViewById(R.id.recycleViewPiatti);
+       recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
        //Inserire codice qua per fare cose
         piattiArrayList = new ArrayList<>();
 
@@ -97,6 +107,8 @@ public class FragmentPiatti extends Fragment {
                     List<Piatto> piattiList = response.body().getPiatti();
                     piattiArrayList.addAll(piattiList);
                     Log.e("JSON",piattiArrayList + "");
+
+                    configureListView();
                 }
             }
 
@@ -108,4 +120,12 @@ public class FragmentPiatti extends Fragment {
 
        return view;
     }
+
+    private void configureListView() {
+
+        CustomAdapterPiatti customAdapterPiatti = new CustomAdapterPiatti(piattiArrayList);
+        recyclerView.setAdapter(customAdapterPiatti);
+    }
+
+
 }
