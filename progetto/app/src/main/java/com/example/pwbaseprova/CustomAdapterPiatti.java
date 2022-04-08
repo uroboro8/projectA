@@ -50,7 +50,7 @@ public class CustomAdapterPiatti extends RecyclerView.Adapter<CustomAdapterPiatt
 
     @Override
     public int getItemCount() {
-        return 0;
+        return piatti.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

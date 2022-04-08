@@ -3,10 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout/activity_dettaglio_piatto.xml" value="0.20108695652173914" />
-        <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout/activity_main.xml" value="0.20108695652173914" />
-        <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout/custom_row_piatti.xml" value="0.8" />
-        <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout/piatti.xml" value="0.20108695652173914" />
+        <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/piatti.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -34,7 +34,7 @@ public class FragmentPiatti extends Fragment {
 
     ArrayList<Piatto> piattiArrayList;
 
-    RecyclerView recyclerView;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,9 +80,9 @@ public class FragmentPiatti extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view = inflater.inflate(R.layout.piatti, container, false);
+       View rootView = inflater.inflate(R.layout.piatti, container, false);
 
-       recyclerView = view.findViewById(R.id.recycleViewPiatti);
+       RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPiatti);
        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
        //Inserire codice qua per fare cose
@@ -107,8 +107,8 @@ public class FragmentPiatti extends Fragment {
                     List<Piatto> piattiList = response.body().getPiatti();
                     piattiArrayList.addAll(piattiList);
                     Log.e("JSON",piattiArrayList + "");
-
-                    configureListView();
+                    CustomAdapterPiatti customAdapterPiatti = new CustomAdapterPiatti(piattiArrayList);
+                    recyclerView.setAdapter(customAdapterPiatti);
                 }
             }
 
@@ -118,13 +118,12 @@ public class FragmentPiatti extends Fragment {
             }
         });
 
-       return view;
+       return rootView;
     }
 
     private void configureListView() {
 
-        CustomAdapterPiatti customAdapterPiatti = new CustomAdapterPiatti(piattiArrayList);
-        recyclerView.setAdapter(customAdapterPiatti);
+
     }
 
 
