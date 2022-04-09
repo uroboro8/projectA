@@ -1,6 +1,10 @@
 package com.example.pwbaseprova;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -17,7 +21,9 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FragmentHome.ClickListener {
+
+    private ViewPager2 viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-
+        viewPager = findViewById(R.id.pager);
         buildTabLayout();
     }
 
     private void buildTabLayout() {
         TabLayout tabLayout = findViewById(R.id.tab_layout);
-        ViewPager2 viewPager = findViewById(R.id.pager);
+
         CustomPagerAdapter adapter = new CustomPagerAdapter(this, 4);
         //PER LO SCROLL VERTICALE:
         //viewPager.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
@@ -64,9 +70,14 @@ public class MainActivity extends AppCompatActivity {
                     tab.setText(nomiTab.get(position));
                 }).attach();
         //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+
     }
 
-
+    @Override
+    public void onButtonClick(int id) {
+       viewPager.setCurrentItem(id);
+    }
 
 
     private class ZoomOutPageTransformer implements ViewPager2.PageTransformer {

@@ -90,7 +90,6 @@ public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.Item
        customAdapterPiatti.setClickListener(this);
        recyclerView.setAdapter(customAdapterPiatti);
 
-       //Inserire codice qua per fare cose
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://uroboro8.github.io/JsonRepository/")
