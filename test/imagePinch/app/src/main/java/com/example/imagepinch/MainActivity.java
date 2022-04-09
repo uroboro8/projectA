@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         scaleGestureDetector.onTouchEvent(event);
-
         return super.onTouchEvent(event);
     }
 

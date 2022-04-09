@@ -88,8 +88,7 @@ public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.Item
        customAdapterPiatti.setClickListener(this);
        recyclerView.setAdapter(customAdapterPiatti);
 
-
-        Retrofit retrofit = new Retrofit.Builder()
+       Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://uroboro8.github.io/JsonRepository/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

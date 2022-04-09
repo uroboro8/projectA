@@ -1,5 +1,6 @@
 package com.example.pwbaseprova;
 
+import com.example.pwbaseprova.gallery.Gallery;
 import com.example.pwbaseprova.itinerari.Itinerari;
 import com.example.pwbaseprova.piatti.Piatti;
 import com.example.pwbaseprova.piatti.Piatto;
@@ -16,4 +17,7 @@ public interface  HttpHandler {
 
     @GET("itinerari/itinerari.json")
     Call<Itinerari> getAllItinerari();
+
+    @GET("galleria/gallery.json")
+    Call<Gallery> getAllImmaginiCustom();
 }
