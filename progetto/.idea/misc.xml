@@ -3,17 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout/activity_dettaglio_itinerario.xml" value="0.20108695652173914" />
-        <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout/custom_row_itinerari.xml" value="0.4" />
-        <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout/custom_row_piatti.xml" value="0.4" />
-        <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout/itinerari.xml" value="0.20108695652173914" />
-        <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout/piatti.xml" value="0.20108695652173914" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout-land/home.xml" value="0.21516754850088182" />
+        <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/activity_dettaglio_itinerario.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/activity_dettaglio_piatto.xml" value="0.4" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/activity_galleria.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/activity_maneggio.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/custom_gallery_item.xml" value="0.2164855072463768" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/custom_row_gallery.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/custom_row_itinerari.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/custom_row_piatti.xml" value="0.2164855072463768" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/fragment_gallery_dialog.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/home.xml" value="0.2" />

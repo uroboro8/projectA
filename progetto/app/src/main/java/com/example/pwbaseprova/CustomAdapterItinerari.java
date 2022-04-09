@@ -50,8 +50,6 @@ public class CustomAdapterItinerari extends RecyclerView.Adapter<CustomAdapterIt
         ImageView imageView = holder.itemImage;
         //Log.e("image",itinerario.getCover());
         if (itinerario.getCover() != null) {
-
-
             if (itinerario.getCover().trim().length() == 0)
                 Picasso.get().load("https://www.mrw.it/img/cope/0iwkf4_1609360688.jpg").into(imageView);
             else
