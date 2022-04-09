@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PWBaseProva">
         <activity
+            android:name=".ManeggioActivity"
+            android:exported="false" />
+        <activity
             android:name=".DettaglioPiattoActivity"
             android:exported="false" />
         <activity

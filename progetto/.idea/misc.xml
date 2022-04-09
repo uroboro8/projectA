@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout-land/home.xml" value="0.21516754850088182" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/activity_dettaglio_piatto.xml" value="0.4" />
+        <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/activity_maneggio.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/custom_gallery_item.xml" value="0.2164855072463768" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/custom_row_piatti.xml" value="0.2164855072463768" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/home.xml" value="0.2" />

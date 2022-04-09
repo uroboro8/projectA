@@ -1,7 +1,9 @@
 package com.example.pwbaseprova;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -67,6 +69,7 @@ public class FragmentHome extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.home, container, false);
 
+        ///Image Slider
         ArrayList imageList = new ArrayList<SlideModel>();// Create image list
 
         imageList.add(new SlideModel("https://www.maridacaterini.it/wp-content/uploads/2020/04/Alessandro-Borghese-4-Ristoranti-Venezia.jpg", "Vincitore di 4 ristoranti 2021",ScaleTypes.CENTER_CROP));
@@ -75,6 +78,12 @@ public class FragmentHome extends Fragment {
 
         ImageSlider imageSlider = view.findViewById(R.id.image_slider);
         imageSlider.setImageList(imageList);
+        ///
+        CardView maneggio = view.findViewById(R.id.cardManeggio);
+        maneggio.setOnClickListener(v->{
+            Intent intent = new Intent(view.getContext(),ManeggioActivity.class);
+            startActivity(intent);
+        });
 
         return view;
     }
