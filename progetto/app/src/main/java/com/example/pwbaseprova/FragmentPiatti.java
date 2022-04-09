@@ -1,6 +1,7 @@
 package com.example.pwbaseprova;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -30,10 +31,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Use the {@link FragmentPiatti#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentPiatti extends Fragment {
+public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.ItemClickListener {
 
     ArrayList<Piatto> piattiArrayList;
-
+    CustomAdapterPiatti customAdapterPiatti;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -82,11 +83,14 @@ public class FragmentPiatti extends Fragment {
         // Inflate the layout for this fragment
        View rootView = inflater.inflate(R.layout.piatti, container, false);
 
+        piattiArrayList = new ArrayList<>();
        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPiatti);
        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+       customAdapterPiatti = new CustomAdapterPiatti(piattiArrayList);
+       customAdapterPiatti.setClickListener(this);
+       recyclerView.setAdapter(customAdapterPiatti);
 
        //Inserire codice qua per fare cose
-        piattiArrayList = new ArrayList<>();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://uroboro8.github.io/JsonRepository/")
@@ -107,8 +111,7 @@ public class FragmentPiatti extends Fragment {
                     List<Piatto> piattiList = response.body().getPiatti();
                     piattiArrayList.addAll(piattiList);
                     Log.e("JSON",piattiArrayList + "");
-                    CustomAdapterPiatti customAdapterPiatti = new CustomAdapterPiatti(piattiArrayList);
-                    recyclerView.setAdapter(customAdapterPiatti);
+                    customAdapterPiatti.notifyDataSetChanged();
                 }
             }
 
@@ -121,10 +124,24 @@ public class FragmentPiatti extends Fragment {
        return rootView;
     }
 
-    private void configureListView() {
 
-
+    @Override
+    public void onItemClick(View view, int position) {
+        Log.e("dentro","dentro");
+        Intent intent = new Intent(getActivity().getBaseContext(),DettaglioPiattoActivity.class);
+        intent.putExtra("item-value",customAdapterPiatti.getItem(position));
+        startActivity(intent);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        customAdapterPiatti.setClickListener(null);
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        customAdapterPiatti.setClickListener(this);
+    }
 }

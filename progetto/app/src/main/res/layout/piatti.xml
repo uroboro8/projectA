@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#18D186"
-    tools:context=".FragmentPiatti">
+    tools:context=".FragmentPiatti"
+    android:clickable="true">
 
     <TextView
         android:id="@+id/textView"

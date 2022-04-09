@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pwbaseprova.piatti.Piatto;
@@ -20,23 +21,27 @@ import java.util.List;
 public class CustomAdapterPiatti extends RecyclerView.Adapter<CustomAdapterPiatti.ViewHolder>{
 
     private List<Piatto> piatti;
+    private ItemClickListener mClickListener;
 
-    public CustomAdapterPiatti(List<Piatto> piatti) {
-        this.piatti = piatti;
+
+
+    // data is passed into the constructor
+    public CustomAdapterPiatti(List<Piatto> piattiList) {
+        piatti = piattiList;
     }
 
+    // inflates the row layout from xml when needed
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        LayoutInflater inflater =LayoutInflater.from(context);
-
-        View myView = inflater.inflate(R.layout.custom_row_piatti,parent,false);
-
-        ViewHolder viewHolder = new ViewHolder(myView);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.custom_row_piatti,parent,false);
+        ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
+    // binds the data in each row
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Piatto piatto = piatti.get(position);
@@ -57,7 +62,11 @@ public class CustomAdapterPiatti extends RecyclerView.Adapter<CustomAdapterPiatt
         return piatti.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+
+
+    // stores and recycles views as they are scrolled off screen
+    public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView itemImage;
         TextView itemText;
@@ -69,17 +78,28 @@ public class CustomAdapterPiatti extends RecyclerView.Adapter<CustomAdapterPiatt
             itemView.setOnClickListener(this);
         }
 
-
         @Override
         public void onClick(View view) {
-            int position = getAdapterPosition();// gets item position
-            if (position != RecyclerView.NO_POSITION) {// Check if an item was deleted, but the user clicked it before the UI removed it
-                Log.e("dentro","dentro");
-                Piatto piatto = piatti.get(position);
-                Intent intent = new Intent(view.getContext(),DettaglioPiattoActivity.class);
-                intent.putExtra("item-value",piatto);
-                view.getContext().startActivity(intent);
-            }
+            if (mClickListener != null)
+                mClickListener.onItemClick(view, getAdapterPosition());
         }
+    }
+
+    // convenience method for getting data at click position
+    Piatto getItem(int id) {
+        return piatti.get(id);
+    }
+
+    // allows clicks events to be caught
+    void setClickListener(ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+
+    void updateList(){
+        notifyDataSetChanged();
+    }
+    // parent activity will implement this method to respond to click events
+    public interface ItemClickListener {
+        void onItemClick(View view, int position);
     }
 }

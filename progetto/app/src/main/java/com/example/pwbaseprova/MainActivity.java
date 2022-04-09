@@ -1,12 +1,17 @@
 package com.example.pwbaseprova;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.example.pwbaseprova.piatti.Piatto;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -60,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 }).attach();
         //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
+
+
+
 
     private class ZoomOutPageTransformer implements ViewPager2.PageTransformer {
         private static final float MIN_SCALE = 0.85f;
