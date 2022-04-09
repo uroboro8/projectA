@@ -1,10 +1,13 @@
 package com.example.pwbaseprova;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +25,8 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class FragmentHome extends Fragment {
+
+    ClickListener activityCallback;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -54,6 +59,20 @@ public class FragmentHome extends Fragment {
         return fragment;
     }
 
+    public interface ClickListener{
+        void onButtonClick(int id);
+    }
+
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        try{
+            activityCallback = (ClickListener) context;
+        }catch(ClassCastException e){
+            throw new ClassCastException(context.toString() + " must implement ClickListener");
+        }
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,11 +99,33 @@ public class FragmentHome extends Fragment {
         imageSlider.setImageList(imageList);
         ///
         CardView maneggio = view.findViewById(R.id.cardManeggio);
+        CardView galleria = view.findViewById(R.id.cardGalleria);
+        CardView itinerari = view.findViewById(R.id.cardItinerari);
+        CardView piatti = view.findViewById(R.id.cardPiatti);
+
         maneggio.setOnClickListener(v->{
             Intent intent = new Intent(view.getContext(),ManeggioActivity.class);
             startActivity(intent);
         });
 
+        galleria.setOnClickListener(v->{
+            Intent intent = new Intent(view.getContext(),GalleriaActivity.class);
+            startActivity(intent);
+        });
+
+        itinerari.setOnClickListener(v->{
+            cardClicked(2);
+        });
+
+        piatti.setOnClickListener(v->{
+           cardClicked(1);
+        });
         return view;
     }
+
+    private void cardClicked(int id) {
+        activityCallback.onButtonClick(id);
+    }
+
+
 }
