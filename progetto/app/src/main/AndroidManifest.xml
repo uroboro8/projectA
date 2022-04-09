@@ -12,8 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PWBaseProva">
         <activity
-            android:name=".DettaglioItinerarioActivity"
             android:name=".GalleriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DettaglioItinerarioActivity"
             android:exported="false" />
         <activity
             android:name=".ManeggioActivity"
