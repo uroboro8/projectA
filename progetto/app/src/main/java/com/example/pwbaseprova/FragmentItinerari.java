@@ -1,8 +1,11 @@
 package com.example.pwbaseprova;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,8 +14,6 @@ import android.view.ViewGroup;
 
 import com.example.pwbaseprova.itinerari.Itinerari;
 import com.example.pwbaseprova.itinerari.Itinerario;
-import com.example.pwbaseprova.piatti.Piatti;
-import com.example.pwbaseprova.piatti.Piatto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +29,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Use the {@link FragmentItinerari#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentItinerari extends Fragment {
+public class FragmentItinerari extends Fragment implements CustomAdapterItinerari.ItemClickListener{
 
     ArrayList<Itinerario> itinerariArrayList;
+    CustomAdapterItinerari customAdapterItinerari;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -75,10 +79,17 @@ public class FragmentItinerari extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.itinerari, container, false);
-        itinerariArrayList = new ArrayList<>();
+        View rootView = inflater.inflate(R.layout.itinerari, container, false);
 
-        //Inserire codice per fare cose qua
+        itinerariArrayList = new ArrayList<>();
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewItinerari);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        customAdapterItinerari = new CustomAdapterItinerari(itinerariArrayList);
+        customAdapterItinerari.setClickListener(this);
+        recyclerView.setAdapter(customAdapterItinerari);
+
+        //Inserire codice qua per fare cose
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://uroboro8.github.io/JsonRepository/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -87,17 +98,18 @@ public class FragmentItinerari extends Fragment {
         //Http handler è un'interfaccia,retrofit si occupa di istanziarla
         HttpHandler service = retrofit.create(HttpHandler.class);
 
-        //Gli dico che richiesta fare
-        Call<Itinerari> request = service.getAllItinerari();
+        //Gli dico quale metodo usare
+        Call<Itinerari> itinerari = service.getAllItinerari();
 
         //Faccio la chiamata al server
-        request.enqueue(new Callback<Itinerari>() {
+        itinerari.enqueue(new Callback<Itinerari>() {
             @Override
             public void onResponse(Call<Itinerari> call, Response<Itinerari> response) {
                 if(response.isSuccessful()) {
-                    List<Itinerario> itinerari = response.body().getItinerari();
-                    itinerariArrayList.addAll(itinerari);
+                    List<Itinerario> itinerariList = response.body().getItinerari();
+                    itinerariArrayList.addAll(itinerariList);
                     Log.e("JSON",itinerariArrayList + "");
+                    customAdapterItinerari.notifyDataSetChanged();
                 }
             }
 
@@ -107,6 +119,26 @@ public class FragmentItinerari extends Fragment {
             }
         });
 
-        return view;
+        return rootView;
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Log.e("dentro","dentro");
+        Intent intent = new Intent(getActivity().getBaseContext(),DettaglioItinerarioActivity.class);
+        intent.putExtra("item-value",customAdapterItinerari.getItem(position));
+        startActivity(intent);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        customAdapterItinerari.setClickListener(null);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        customAdapterItinerari.setClickListener(this);
     }
 }

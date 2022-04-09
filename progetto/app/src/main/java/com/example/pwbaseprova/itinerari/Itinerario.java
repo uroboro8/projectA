@@ -1,10 +1,13 @@
 package com.example.pwbaseprova.itinerari;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Itinerario {
+public class Itinerario implements Parcelable {
 
     @SerializedName("id")
     private int id;
@@ -29,6 +32,29 @@ public class Itinerario {
 
     @SerializedName("description")
     private String description;
+
+    protected Itinerario(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        duration = in.readInt();
+        price = in.readInt();
+        cover = in.readString();
+        gallery = in.createStringArrayList();
+        type = in.readString();
+        description = in.readString();
+    }
+
+    public static final Creator<Itinerario> CREATOR = new Creator<Itinerario>() {
+        @Override
+        public Itinerario createFromParcel(Parcel in) {
+            return new Itinerario(in);
+        }
+
+        @Override
+        public Itinerario[] newArray(int size) {
+            return new Itinerario[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -106,5 +132,22 @@ public class Itinerario {
                 "type='" + type + '\'' + ",\n" +
                 "description='" + description + '\'' + ",\n" +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeInt(duration);
+        parcel.writeInt(price);
+        parcel.writeString(cover);
+        parcel.writeStringList(gallery);
+        parcel.writeString(type);
+        parcel.writeString(description);
     }
 }
