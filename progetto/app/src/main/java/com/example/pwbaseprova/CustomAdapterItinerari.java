@@ -48,13 +48,10 @@ public class CustomAdapterItinerari extends RecyclerView.Adapter<CustomAdapterIt
         textView.setText(itinerario.getName());
 
         ImageView imageView = holder.itemImage;
-        //Log.e("image",itinerario.getCover());
-        if (itinerario.getCover() != null) {
-            if (itinerario.getCover().trim().length() == 0)
-                Picasso.get().load("https://www.mrw.it/img/cope/0iwkf4_1609360688.jpg").into(imageView);
-            else
-                Picasso.get().load(itinerario.getCover()).into(imageView);
-        }
+
+        if (itinerario.getCover() != null && itinerario.getCover().trim().length() != 0)
+            Picasso.get().load(itinerario.getCover()).into(imageView);
+
         TextView textView1 = holder.itemText1;
         textView1.setText(itinerario.getDuration()+"h - "+itinerario.getPrice()+"$");
     }

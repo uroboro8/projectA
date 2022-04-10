@@ -1,14 +1,17 @@
 package com.example.pwbaseprova;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GestureDetectorCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.pwbaseprova.gallery.Gallery;
 import com.example.pwbaseprova.gallery.ImageCustom;
@@ -24,15 +27,23 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class GalleriaActivity extends AppCompatActivity implements  CustomAdapterGalleryImage.ItemClickListener {
+public class GalleriaActivity extends AppCompatActivity implements  CustomAdapterGalleryImage.ItemClickListener,
+        GestureDetector.OnGestureListener{
 
-    ArrayList<ImageCustom> gallery;
-    CustomAdapterGalleryImage adapter;
+    private ArrayList<ImageCustom> gallery;
+    private CustomAdapterGalleryImage adapter;
+
+    private static final long VELOCITY_THRESHOLD=1000;
+    private GestureDetectorCompat gDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_galleria);
+
+        getSupportActionBar().hide();
+
+        gDetector = new GestureDetectorCompat(this,this);
 
         gallery = new ArrayList<>();
 
@@ -72,6 +83,11 @@ public class GalleriaActivity extends AppCompatActivity implements  CustomAdapte
             }
         });
 
+        ImageView back = findViewById(R.id.backGalleriaFoto);
+
+        back.setOnClickListener(v ->{
+            finish();
+        });
     }
 
     @Override
@@ -84,5 +100,54 @@ public class GalleriaActivity extends AppCompatActivity implements  CustomAdapte
         dialogFragment.show(getSupportFragmentManager(),"My  Fragment");
     }
 
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.from_left_in, R.anim.from_right_out);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float vX, float vY) {
+        if(Math.abs(vX) > Math.abs(vY)){
+            if(vX < VELOCITY_THRESHOLD)
+                return false;
+            if(vX >= 0) {
+                finish();
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+
+    }
 
 }

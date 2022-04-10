@@ -2,6 +2,7 @@ package com.example.pwbaseprova;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,19 +51,17 @@ public class CustomAdapterPiatti extends RecyclerView.Adapter<CustomAdapterPiatt
         textView.setText(piatto.getName());
 
         ImageView imageView = holder.itemImage;
-        Log.e("image",piatto.getImage());
-        if(piatto.getImage().trim().length() == 0)
-            Picasso.get().load("https://www.mrw.it/img/cope/0iwkf4_1609360688.jpg").into(imageView);
-        else
+
+        if(piatto.getImage() != null && piatto.getImage().trim().length() != 0)
             Picasso.get().load(piatto.getImage()).into(imageView);
+        else
+            Picasso.get().load("https://uroboro8.github.io/ImageRepository/images/default-placeholder.png").into(imageView);
     }
 
     @Override
     public int getItemCount() {
         return piatti.size();
     }
-
-
 
 
     // stores and recycles views as they are scrolled off screen

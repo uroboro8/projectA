@@ -1,6 +1,7 @@
 package com.example.pwbaseprova;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GestureDetectorCompat;
 
 
@@ -25,6 +26,8 @@ public class DettaglioPiattoActivity extends AppCompatActivity implements Gestur
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dettaglio_piatto);
 
+        getSupportActionBar().hide();
+
         overridePendingTransition(R.anim.from_right_in, R.anim.from_left_out);
 
         gDetector = new GestureDetectorCompat(this,this);
@@ -36,21 +39,18 @@ public class DettaglioPiattoActivity extends AppCompatActivity implements Gestur
         TextView title = findViewById(R.id.titlePiatto);
         TextView description = findViewById(R.id.descriptionPiatto);
         ImageView image = findViewById(R.id.imagePiatto);
-        Button back = findViewById(R.id.buttonBackPiatto);
+        ImageView back = findViewById(R.id.backDettaglioPiatto);
+
 
         title.setText(piatto.getName());
         description.setText(piatto.getDescription());
 
-        if(piatto.getImage().trim().length() == 0)
-            Picasso.get().load("https://www.mrw.it/img/cope/0iwkf4_1609360688.jpg").into(image);
-        else
+        if(piatto.getImage() != null && piatto.getImage().trim().length() != 0)
             Picasso.get().load(piatto.getImage()).into(image);
 
         back.setOnClickListener(v ->{
             finish();
         });
-
-
 
     }
 

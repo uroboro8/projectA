@@ -7,14 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".GalleryDialogFragment">
 
-    <ImageView
-        android:id="@+id/dialogFragmentImage"
-        android:layout_width="324dp"
-        android:layout_height="251dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/gallery_home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/dialogFragmentImage"
+            android:layout_width="324dp"
+            android:layout_height="251dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_placeholder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

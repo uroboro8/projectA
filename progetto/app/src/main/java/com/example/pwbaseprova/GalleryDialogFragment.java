@@ -90,9 +90,7 @@ public class GalleryDialogFragment extends androidx.fragment.app.DialogFragment 
 
         image = view.findViewById(R.id.dialogFragmentImage);
 
-        if(imageUrl.trim().length() == 0)
-            Picasso.get().load("https://www.mrw.it/img/cope/0iwkf4_1609360688.jpg").into(image);
-        else
+        if(imageUrl != null && imageUrl.trim().length() != 0)
             Picasso.get().load(imageUrl).into(image);
 
         return view;

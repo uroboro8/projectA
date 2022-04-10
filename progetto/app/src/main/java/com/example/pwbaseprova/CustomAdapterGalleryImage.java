@@ -49,10 +49,9 @@ public class CustomAdapterGalleryImage extends RecyclerView.Adapter<CustomAdapte
 
         ImageView imageView = holder.itemImage;
 
-        if(image.getImage().trim().length() == 0)
-            Picasso.get().load("https://www.mrw.it/img/cope/0iwkf4_1609360688.jpg").into(imageView);
-        else
+        if(image.getImage() != null && image.getImage().trim().length() != 0)
             Picasso.get().load(image.getImage()).into(imageView);
+
     }
 
     @Override
