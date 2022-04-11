@@ -2,21 +2,132 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4CAF50"
+    android:background="#000000"
     tools:context=".FragmentContatti">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewContatti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fragment 4"
+        android:layout_marginTop="32dp"
+        android:text="Contatti"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff">
+
+            <TextView
+                android:id="@+id/textViewTelefono"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="188dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toTopOf="@+id/textViewPosizione"
+                app:layout_constraintEnd_toEndOf="@id/imageViewMappa"
+                app:layout_constraintStart_toEndOf="@+id/imageViewTelefono"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewPosizione"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="188dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toTopOf="@+id/textViewEmail"
+                app:layout_constraintEnd_toEndOf="@id/imageViewMappa"
+                app:layout_constraintStart_toEndOf="@+id/imageViewPosizione"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTelefono" />
+
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="188dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toTopOf="@+id/imageViewMappa"
+                app:layout_constraintEnd_toEndOf="@id/imageViewMappa"
+                app:layout_constraintStart_toEndOf="@+id/imageViewEmail"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPosizione" />
+
+            <ImageView
+                android:id="@+id/imageViewTelefono"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="300dp"
+                android:src="@drawable/outline_phone_24"
+                app:layout_constraintBottom_toTopOf="@+id/imageViewPosizione"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread" />
+
+            <ImageView
+                android:id="@+id/imageViewPosizione"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="300dp"
+                android:src="@drawable/outline_location_on_24"
+                app:layout_constraintBottom_toTopOf="@+id/imageViewEmail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewTelefono" />
+
+            <ImageView
+                android:id="@+id/imageViewEmail"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="300dp"
+                android:src="@drawable/outline_alternate_email_24"
+                app:layout_constraintBottom_toTopOf="@+id/imageViewMappa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewPosizione" />
+
+            <ImageView
+                android:id="@+id/imageViewMappa"
+                android:layout_width="300dp"
+                android:layout_height="270dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:src="@drawable/mappa"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewEmail" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

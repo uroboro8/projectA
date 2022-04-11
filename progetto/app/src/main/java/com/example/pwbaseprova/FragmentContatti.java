@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +16,15 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class FragmentContatti extends Fragment {
+
+    private ImageView imageView1;
+    private ImageView imageView2;
+    private ImageView imageView3;
+    private ImageView imageView4;
+    private TextView textView1;
+    private TextView textView2;
+    private TextView textView3;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +72,10 @@ public class FragmentContatti extends Fragment {
         // Inflate the layout for this fragment
        View view = inflater.inflate(R.layout.contatti, container, false);
         //Inserire codice per fare cose qua
+
+
+        textView1 = view.findViewById(R.id.textViewTelefono);
+        textView1.setText("Indirizzo, Nr. civico, CAP, Città, Provincia");
         return view;
     }
 }
