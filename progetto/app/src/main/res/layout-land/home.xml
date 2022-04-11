@@ -8,12 +8,24 @@
     android:background="#FFFFFF"
     tools:context=".FragmentHome">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:src="@drawable/default_placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop"/>
+
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/image_slider"
         android:layout_width="0dp"
-        android:layout_height="170dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="150dp"
         app:iss_auto_cycle="true"
         app:iss_delay="0"
         app:iss_period="5000"
@@ -21,19 +33,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.195" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+    </com.denzcoskun.imageslider.ImageSlider>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardManeggio"
-        android:layout_width="150dp"
+        android:layout_width="150sp"
         android:layout_height="0dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cardGalleria"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_slider"
         app:layout_constraintVertical_bias="0.0">
@@ -45,15 +56,17 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="127dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:src="@drawable/maneggio_home" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Maneggio" />
+                android:text="Maneggio"
+                android:textColor="@color/black" />
 
 
         </LinearLayout>
@@ -61,13 +74,15 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardGalleria"
-        android:layout_width="150dp"
+        android:layout_width="150sp"
         android:layout_height="0dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cardItinerari"
+        app:layout_constraintStart_toEndOf="@+id/cardManeggio"
         app:layout_constraintTop_toBottomOf="@+id/image_slider"
         app:layout_constraintVertical_bias="0.0">
 
@@ -78,15 +93,17 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="127dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:src="@drawable/gallery_home" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Galleria Foto" />
+                android:text="Galleria Foto"
+                android:textColor="@color/black"/>
 
 
         </LinearLayout>
@@ -94,11 +111,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardItinerari"
-        android:layout_width="150dp"
+        android:layout_width="150sp"
         android:layout_height="0dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cardPiatti"
         app:layout_constraintTop_toBottomOf="@+id/image_slider">
@@ -110,15 +127,17 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="127dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:src="@drawable/itinerari_home" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Itinerari" />
+                android:text="Itinerari"
+                android:textColor="@color/black"/>
 
 
         </LinearLayout>
@@ -126,11 +145,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardPiatti"
-        android:layout_width="150dp"
+        android:layout_width="150sp"
         android:layout_height="0dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_slider"
@@ -143,17 +162,20 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="127dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:src="@drawable/piatti_home" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Piatti" />
+                android:text="Piatti"
+                android:textColor="@color/black"/>
 
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
