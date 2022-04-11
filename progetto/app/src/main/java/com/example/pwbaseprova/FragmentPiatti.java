@@ -81,7 +81,7 @@ public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.Item
         // Inflate the layout for this fragment
        View rootView = inflater.inflate(R.layout.piatti, container, false);
 
-        piattiArrayList = new ArrayList<>();
+       piattiArrayList = new ArrayList<>();
        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPiatti);
        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
        customAdapterPiatti = new CustomAdapterPiatti(piattiArrayList);

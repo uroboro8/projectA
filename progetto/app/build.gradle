@@ -47,5 +47,8 @@ dependencies {
     //ImageSlider
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
+    //PhotoView
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
 
 }

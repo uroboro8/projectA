@@ -47,19 +47,19 @@ public class MainActivity extends AppCompatActivity implements FragmentHome.Clic
         viewPager.setPageTransformer(new DepthPageTransformer());
         //viewPager.setPageTransformer(new ZoomOutPageTransformer());
         viewPager.setAdapter(adapter);
-
+/*
         ArrayList<String> nomiTab = new ArrayList<>();
-        nomiTab.add("1");
-        nomiTab.add("2");
-        nomiTab.add("3");
-        nomiTab.add("4");
+        nomiTab.add("Home");
+        nomiTab.add("Menù");
+        nomiTab.add("Itinerari");
+        nomiTab.add("Contatti");*/
 
         ArrayList<Integer> iconeTab = new ArrayList<>();
 
-        iconeTab.add(android.R.drawable.ic_dialog_map);
-        iconeTab.add(android.R.drawable.ic_dialog_alert);
-        iconeTab.add(android.R.drawable.ic_dialog_dialer);
-        iconeTab.add(android.R.drawable.ic_dialog_email);
+        iconeTab.add(R.drawable.ic_baseline_home_48);
+        iconeTab.add(R.drawable.ic_baseline_local_dining_48);
+        iconeTab.add(R.drawable.ic_baseline_nature_people_48);
+        iconeTab.add(R.drawable.ic_baseline_local_phone_48);
 
 
         //QUI CREO ANCHE I TAB
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements FragmentHome.Clic
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
                     tab.setIcon(iconeTab.get(position));
-                    tab.setText(nomiTab.get(position));
+                    //tab.setText(nomiTab.get(position));
                 }).attach();
         //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 

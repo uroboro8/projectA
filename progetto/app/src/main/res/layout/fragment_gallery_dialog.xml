@@ -8,12 +8,11 @@
     tools:context=".GalleryDialogFragment">
 
 
-        <ImageView
-            android:id="@+id/dialogFragmentImage"
-            android:layout_width="324dp"
-            android:layout_height="251dp"
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/photo_view"
+            android:layout_width="300sp"
+            android:layout_height="300sp"
             android:scaleType="centerCrop"
-            android:src="@drawable/default_placeholder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

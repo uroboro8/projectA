@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@color/grey"
     tools:context=".GalleriaActivity">
 
     <androidx.cardview.widget.CardView
@@ -49,18 +49,21 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#682801">
+            android:background="@color/primaryColor">
 
             <TextView
                 android:id="@+id/titleGalleriaFoto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/primaryColor"
+                android:fontFamily="cursive"
+                android:gravity="center"
                 android:text="Galleria Foto"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/myToolbar"
                 app:layout_constraintStart_toEndOf="@+id/backGalleriaFoto"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,7 +83,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/myToolbar"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+                app:srcCompat="@drawable/ic_baseline_arrow_back_black" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

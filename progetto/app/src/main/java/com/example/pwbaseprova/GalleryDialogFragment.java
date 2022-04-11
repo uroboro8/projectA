@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.pwbaseprova.gallery.ImageCustom;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -20,13 +21,9 @@ import com.squareup.picasso.Picasso;
  * Use the {@link GalleryDialogFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GalleryDialogFragment extends androidx.fragment.app.DialogFragment implements
-        ScaleGestureDetector.OnScaleGestureListener{
+public class GalleryDialogFragment extends androidx.fragment.app.DialogFragment{
 
     private String imageUrl;
-    private ImageView image;
-    private ScaleGestureDetector scaleGestureDetector;
-    private float mScaleFactor = 1.0f;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,46 +73,17 @@ public class GalleryDialogFragment extends androidx.fragment.app.DialogFragment 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         super.onCreateView(inflater, container, savedInstanceState);
+
         View view = inflater.inflate(R.layout.fragment_gallery_dialog, container, false);
 
-        scaleGestureDetector = new ScaleGestureDetector(getActivity(), this);
-
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                scaleGestureDetector.onTouchEvent(motionEvent);
-                return true;
-            }
-        });
-
-        image = view.findViewById(R.id.dialogFragmentImage);
+        PhotoView photo = (PhotoView) view.findViewById(R.id.photo_view);
 
         if(imageUrl != null && imageUrl.trim().length() != 0)
-            Picasso.get().load(imageUrl).into(image);
+            Picasso.get().load(imageUrl).into(photo);
+        else
+            Picasso.get().load(R.drawable.default_placeholder).into(photo);
 
         return view;
     }
 
-
-    @Override
-    public boolean onScale(ScaleGestureDetector detector) {
-        if(mScaleFactor >= 1.0f) {
-            mScaleFactor *= detector.getScaleFactor();
-            image.setScaleX(mScaleFactor);
-            image.setScaleY(mScaleFactor);
-        }
-        else{
-            mScaleFactor = 1.0f;
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onScaleBegin(ScaleGestureDetector scaleGestureDetector) {
-        return true;
-    }
-
-    @Override
-    public void onScaleEnd(ScaleGestureDetector scaleGestureDetector) {
-    }
 }
