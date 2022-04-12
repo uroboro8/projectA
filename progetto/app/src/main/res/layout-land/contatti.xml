@@ -53,83 +53,117 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical" >
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent">
 
-                        <ImageView
-                            android:id="@+id/imageViewTelefono"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:adjustViewBounds="false"
-                            android:cropToPadding="false"
-                            android:src="@drawable/outline_phone_24" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/textViewTelefono"
-                            android:layout_width="247dp"
-                            android:layout_height="40dp"
-                            android:gravity="start|center_vertical"
-                            android:text="Telefono: 387 559 2598\nFax: 5411615466"
-                            android:textColor="#000000" />
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/imageViewTelefono"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="3dp"
+                                android:adjustViewBounds="false"
+                                android:cropToPadding="false"
+                                android:src="@drawable/outline_phone_24" />
 
-                    <LinearLayout
+                            <TextView
+                                android:id="@+id/textViewTelefono"
+                                android:layout_width="247dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="9dp"
+                                android:layout_marginTop="16dp"
+                                android:gravity="start|center_vertical"
+                                android:text="Telefono: 387 559 2598\nFax: 5411615466"
+                                android:textColor="#000000" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent" >
 
-                        <ImageView
-                            android:id="@+id/imageViewPosizione"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/outline_location_on_24" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/textViewPosizione"
-                            android:layout_width="247dp"
-                            android:layout_height="40dp"
-                            android:gravity="start|center_vertical"
-                            android:text="Via Corsolungo, 2, 50010, Toscana"
-                            android:textColor="#000000" />
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/imageViewPosizione"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="3dp"
+                                android:src="@drawable/outline_location_on_24" />
 
-                    <LinearLayout
+                            <TextView
+                                android:id="@+id/textViewPosizione"
+                                android:layout_width="247dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="9dp"
+                                android:layout_marginTop="16dp"
+                                android:gravity="start|center_vertical"
+                                android:text="Via Corsolungo, 2, 50010, Toscana"
+                                android:textColor="#000000" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent" >
 
-                        <ImageView
-                            android:id="@+id/imageViewEmail"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/outline_alternate_email_24" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/textViewEmail"
-                            android:layout_width="247dp"
-                            android:layout_height="40dp"
-                            android:gravity="start|center_vertical"
-                            android:text="Email: ristorante@risto.it"
-                            android:textColor="#000000" />
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/imageViewEmail"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="3dp"
+                                android:src="@drawable/outline_alternate_email_24" />
 
-                    <LinearLayout
+                            <TextView
+                                android:id="@+id/textViewEmail"
+                                android:layout_width="247dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="9dp"
+                                android:layout_marginTop="16dp"
+                                android:gravity="start|center_vertical"
+                                android:text="Email: ristorante@risto.it"
+                                android:textColor="#000000" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent" >
 
-                        <ImageView
-                            android:id="@+id/imageViewMappa"
-                            android:layout_width="450dp"
-                            android:layout_height="450dp"
-                            android:src="@drawable/mappa" />
-                    </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageViewMappa"
+                                android:layout_width="300dp"
+                                android:layout_height="300dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginBottom="16dp"
+                                android:src="@drawable/mappa" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
                 </LinearLayout>
             </ScrollView>
 

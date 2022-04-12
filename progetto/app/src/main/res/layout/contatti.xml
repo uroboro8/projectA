@@ -23,7 +23,7 @@
 
     <androidx.cardview.widget.CardView
 
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="120dp"
@@ -35,110 +35,127 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ffffff">
+            android:background="#ffffff"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textViewEmail"
-                android:layout_width="247dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="93dp"
-                android:layout_marginTop="176dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="363dp"
-                android:gravity="start|center_vertical"
-                android:text="Email: ristorante@risto.it"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textViewPosizione"
-                android:layout_width="247dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="93dp"
-                android:layout_marginTop="104dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="435dp"
-                android:gravity="start|center_vertical"
-                android:text="Via Corsolungo, 2, 50010, Toscana"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <LinearLayout
+                    android:id="@+id/linearLayout9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textViewTelefono"
-                android:layout_width="247dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="93dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="507dp"
-                android:gravity="start|center_vertical"
-                android:text="Telefono: 387 559 2598\nFax: 5411615466"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                    <ImageView
+                        android:id="@+id/imageViewTelefono"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="3dp"
+                        android:src="@drawable/outline_phone_24" />
 
-            <ImageView
-                android:id="@+id/imageViewTelefono"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="300dp"
-                android:src="@drawable/outline_phone_24"
-                app:layout_constraintBottom_toTopOf="@+id/imageViewPosizione"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="spread" />
+                    <TextView
+                        android:id="@+id/textViewTelefono"
+                        android:layout_width="247dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="9dp"
+                        android:gravity="start|center_vertical"
+                        android:text="Telefono: 387 559 2598\nFax: 5411615466"
+                        android:textColor="#000000" />
 
-            <ImageView
-                android:id="@+id/imageViewPosizione"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="300dp"
-                android:src="@drawable/outline_location_on_24"
-                app:layout_constraintBottom_toTopOf="@+id/imageViewEmail"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewTelefono" />
+                </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imageViewEmail"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="300dp"
-                android:src="@drawable/outline_alternate_email_24"
-                app:layout_constraintBottom_toTopOf="@+id/imageViewMappa"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewPosizione" />
+                <LinearLayout
+                    android:id="@+id/linearLayout8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
 
-            <ImageView
-                android:id="@+id/imageViewMappa"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:src="@drawable/mappa"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewEmail" />
+                    <ImageView
+                        android:id="@+id/imageViewPosizione"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="3dp"
+                        android:src="@drawable/outline_location_on_24" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/textViewPosizione"
+                        android:layout_width="247dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="9dp"
+                        android:gravity="start|center_vertical"
+                        android:text="Via Corsolungo, 2, 50010, Toscana"
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout11"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+
+                    <ImageView
+                        android:id="@+id/imageViewEmail"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="3dp"
+                        android:src="@drawable/outline_alternate_email_24" />
+
+                    <TextView
+                        android:id="@+id/textViewEmail"
+                        android:layout_width="247dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="9dp"
+                        android:gravity="start|center_vertical"
+                        android:text="Email: ristorante@risto.it"
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
+
+                    <ImageView
+                        android:id="@+id/imageViewMappa"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:src="@drawable/mappa" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
