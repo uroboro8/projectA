@@ -17,14 +17,6 @@ import android.widget.TextView;
  */
 public class FragmentContatti extends Fragment {
 
-    private ImageView imageView1;
-    private ImageView imageView2;
-    private ImageView imageView3;
-    private ImageView imageView4;
-    private TextView textView1;
-    private TextView textView2;
-    private TextView textView3;
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,9 +65,6 @@ public class FragmentContatti extends Fragment {
        View view = inflater.inflate(R.layout.contatti, container, false);
         //Inserire codice per fare cose qua
 
-
-        textView1 = view.findViewById(R.id.textViewTelefono);
-        textView1.setText("Indirizzo, Nr. civico, CAP, Città, Provincia");
         return view;
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#EEEEEE"
     tools:context=".FragmentContatti">
 
     <TextView
@@ -13,17 +13,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Contatti"
-        android:textSize="40sp"
-        android:textStyle="bold"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
 
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="120dp"
@@ -41,40 +41,53 @@
             android:background="#ffffff">
 
             <TextView
-                android:id="@+id/textViewTelefono"
-                android:layout_width="wrap_content"
+                android:id="@+id/textViewEmail"
+                android:layout_width="247dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="188dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/textViewPosizione"
-                app:layout_constraintEnd_toEndOf="@id/imageViewMappa"
-                app:layout_constraintStart_toEndOf="@+id/imageViewTelefono"
+                android:layout_marginStart="93dp"
+                android:layout_marginTop="176dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="363dp"
+                android:gravity="start|center_vertical"
+                android:text="Email: ristorante@risto.it"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textViewPosizione"
-                android:layout_width="wrap_content"
+                android:layout_width="247dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="188dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/textViewEmail"
-                app:layout_constraintEnd_toEndOf="@id/imageViewMappa"
-                app:layout_constraintStart_toEndOf="@+id/imageViewPosizione"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTelefono" />
+                android:layout_marginStart="93dp"
+                android:layout_marginTop="104dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="435dp"
+                android:gravity="start|center_vertical"
+                android:text="Via Corsolungo, 2, 50010, Toscana"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textViewEmail"
-                android:layout_width="wrap_content"
+                android:id="@+id/textViewTelefono"
+                android:layout_width="247dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="188dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/imageViewMappa"
-                app:layout_constraintEnd_toEndOf="@id/imageViewMappa"
-                app:layout_constraintStart_toEndOf="@+id/imageViewEmail"
-                app:layout_constraintTop_toBottomOf="@+id/textViewPosizione" />
+                android:layout_marginStart="93dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="507dp"
+                android:gravity="start|center_vertical"
+                android:text="Telefono: 387 559 2598\nFax: 5411615466"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imageViewTelefono"
@@ -116,7 +129,7 @@
             <ImageView
                 android:id="@+id/imageViewMappa"
                 android:layout_width="300dp"
-                android:layout_height="270dp"
+                android:layout_height="300dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
                 android:src="@drawable/mappa"
