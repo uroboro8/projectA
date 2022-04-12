@@ -25,13 +25,12 @@ public class CustomAdapterPiatti extends RecyclerView.Adapter<CustomAdapterPiatt
     private ItemClickListener mClickListener;
 
 
-
-    // data is passed into the constructor
+    //Passiamo i dati tramite il costruttore
     public CustomAdapterPiatti(List<Piatto> piattiList) {
         piatti = piattiList;
     }
 
-    // inflates the row layout from xml when needed
+    //Inflate del layout dall'xml
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,7 +41,7 @@ public class CustomAdapterPiatti extends RecyclerView.Adapter<CustomAdapterPiatt
         return viewHolder;
     }
 
-    // binds the data in each row
+    //Inserisco i dati per ogni riga
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Piatto piatto = piatti.get(position);
@@ -64,7 +63,7 @@ public class CustomAdapterPiatti extends RecyclerView.Adapter<CustomAdapterPiatt
     }
 
 
-    // stores and recycles views as they are scrolled off screen
+    //Salve e ricicla le view
     public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView itemImage;
@@ -84,20 +83,22 @@ public class CustomAdapterPiatti extends RecyclerView.Adapter<CustomAdapterPiatt
         }
     }
 
-    // convenience method for getting data at click position
+    //Ottieni i dati dell'item cliccato
     Piatto getItem(int id) {
         return piatti.get(id);
     }
 
-    // allows clicks events to be caught
+    //Abilita la possibilità di ascoltare i click
     void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 
+    //Da fare per il filtro
     void updateList(){
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
     }
-    // parent activity will implement this method to respond to click events
+
+    //L'activity padre implementa questo metodo per rispondere ai click
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }

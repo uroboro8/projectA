@@ -26,12 +26,12 @@ public class CustomAdapterGalleryImage extends RecyclerView.Adapter<CustomAdapte
 
 
 
-    // data is passed into the constructor
+    //Passiamo i dati tramite il costruttore
     public CustomAdapterGalleryImage(List<ImageCustom> piattiList) {
         gallery = piattiList;
     }
 
-    // inflates the row layout from xml when needed
+    //Inflate del layout dall'xml
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,7 +42,7 @@ public class CustomAdapterGalleryImage extends RecyclerView.Adapter<CustomAdapte
         return viewHolder;
     }
 
-    // binds the data in each row
+    //Inserisco i dati per ogni riga
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ImageCustom image = gallery.get(position);
@@ -62,7 +62,7 @@ public class CustomAdapterGalleryImage extends RecyclerView.Adapter<CustomAdapte
 
 
 
-    // stores and recycles views as they are scrolled off screen
+    //Salve e ricicla le view
     public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView itemImage;
@@ -80,21 +80,22 @@ public class CustomAdapterGalleryImage extends RecyclerView.Adapter<CustomAdapte
         }
     }
 
-    // convenience method for getting data at click position
+    //Ottieni i dati dell'item cliccato
     ImageCustom getItem(int id) {
         return gallery.get(id);
     }
 
-    // allows clicks events to be caught
+    //Abilita la possibilità di ascoltare i click
     void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 
+    //Da fare per il filtro
     void updateList(){
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
     }
 
-    // parent activity will implement this method to respond to click events
+    //L'activity padre implementa questo metodo per rispondere ai click
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }

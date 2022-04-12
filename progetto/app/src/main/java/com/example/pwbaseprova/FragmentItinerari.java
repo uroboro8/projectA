@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.pwbaseprova.itinerari.Itinerari;
 import com.example.pwbaseprova.itinerari.Itinerario;
+import com.example.pwbaseprova.piatti.Piatti;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +32,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class FragmentItinerari extends Fragment implements CustomAdapterItinerari.ItemClickListener{
 
-    ArrayList<Itinerario> itinerariArrayList;
-    CustomAdapterItinerari customAdapterItinerari;
+    private ArrayList<Itinerario> itinerariArrayList;
+    private CustomAdapterItinerari customAdapterItinerari;
 
+    private HttpHandler service;
+
+    /*
+     *  NOTE_DONE = richiesta non fatta
+     *  OK =  successo
+     *  BAD = fallimento
+     */
+    private String  REQUEST_CODE = "NOT_DONE";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,28 +87,49 @@ public class FragmentItinerari extends Fragment implements CustomAdapterItinerar
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View rootView = inflater.inflate(R.layout.itinerari, container, false);
 
-        itinerariArrayList = new ArrayList<>();
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewItinerari);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        customAdapterItinerari = new CustomAdapterItinerari(itinerariArrayList);
-        customAdapterItinerari.setClickListener(this);
-        recyclerView.setAdapter(customAdapterItinerari);
-
-
+        //Creo la classe retrofit,dandogli l'url base e il convertitore per il Json
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://uroboro8.github.io/JsonRepository/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        //Http handler è un'interfaccia,retrofit si occupa di istanziarla
-        HttpHandler service = retrofit.create(HttpHandler.class);
+        //Http handler è un'interfaccia,retrofit si occupa di implementare il metodo
+        service = retrofit.create(HttpHandler.class);
 
-        //Gli dico quale metodo usare
-        Call<Itinerari> request = service.getAllItinerari();
+        //In questo mondo non ri-eseguo la chiamata http
+        //passando da portrait a landscape e viceversa
+        if(savedInstanceState == null) {
+            itinerariArrayList = new ArrayList<>();
+            //Creo la request
+            Call<Itinerari> request = service.getAllItinerari();
+            HttpCall(request);
+        }else{
+            itinerariArrayList = savedInstanceState.getParcelableArrayList("itinerari");
+        }
 
+        //Setto la RecyclerView per visualizzare gli elementi a grilia e gli imposto l'adapter per le mie immagini
+        //Recycler View
+        RecyclerView itinerariRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewItinerari);
+        itinerariRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //Adapter
+        customAdapterItinerari = new CustomAdapterItinerari(itinerariArrayList);
+        customAdapterItinerari.setClickListener(this);
+        itinerariRecyclerView.setAdapter(customAdapterItinerari);
+
+        return rootView;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("itinerari",itinerariArrayList);
+    }
+
+
+    public void HttpCall(Call<Itinerari> request){
         //Faccio la chiamata al server
         request.enqueue(new Callback<Itinerari>() {
             @Override
@@ -107,23 +137,20 @@ public class FragmentItinerari extends Fragment implements CustomAdapterItinerar
                 if(response.isSuccessful()) {
                     List<Itinerario> itinerariList = response.body().getItinerari();
                     itinerariArrayList.addAll(itinerariList);
-                    Log.e("JSON",itinerariArrayList + "");
                     customAdapterItinerari.notifyDataSetChanged();
+                    REQUEST_CODE = "OK";
+                    Log.e("JSON",itinerariArrayList + "");
                 }
             }
-
             @Override
             public void onFailure(Call<Itinerari> call, Throwable t) {
+                REQUEST_CODE = "BAD";
                 Log.e("failure",t.getMessage());
             }
         });
-
-        return rootView;
     }
-
     @Override
     public void onItemClick(View view, int position) {
-        Log.e("dentro","dentro");
         Intent intent = new Intent(getActivity().getBaseContext(),DettaglioItinerarioActivity.class);
         intent.putExtra("item-value",customAdapterItinerari.getItem(position));
         startActivity(intent);
@@ -132,12 +159,20 @@ public class FragmentItinerari extends Fragment implements CustomAdapterItinerar
     @Override
     public void onPause() {
         super.onPause();
+        //Impedisce che la lista sia cliccabile da altre tab
         customAdapterItinerari.setClickListener(null);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        //Quando torno su questa tab,ripristino l'ascolto dei click
         customAdapterItinerari.setClickListener(this);
+
+        //Se i dati NON sono stati recuperati la prima volta(es. no internet),rifaccio la chiamata
+        if(REQUEST_CODE == "BAD"){
+            Call<Itinerari> request = service.getAllItinerari();
+            HttpCall(request);
+        }
     }
 }

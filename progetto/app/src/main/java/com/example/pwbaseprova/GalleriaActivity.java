@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 import com.example.pwbaseprova.gallery.Gallery;
 import com.example.pwbaseprova.gallery.ImageCustom;
+import com.example.pwbaseprova.itinerari.Itinerari;
 import com.example.pwbaseprova.piatti.Piatti;
 import com.example.pwbaseprova.piatti.Piatto;
 
@@ -36,58 +37,96 @@ public class GalleriaActivity extends AppCompatActivity implements  CustomAdapte
     private static final long VELOCITY_THRESHOLD=1000;
     private GestureDetectorCompat gDetector;
 
+    private HttpHandler service;
+
+    /*
+     *  NOTE_DONE = richiesta non fatta
+     *  OK =  successo
+     *  BAD = fallimento
+     */
+    private String  REQUEST_CODE = "NOT_DONE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_galleria);
 
+        //Nasconde la barra in alto di default
         getSupportActionBar().hide();
 
         gDetector = new GestureDetectorCompat(this,this);
 
-        gallery = new ArrayList<>();
-
-        RecyclerView myRw2 = findViewById(R.id.recyclerViewGallery);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3,GridLayoutManager.VERTICAL,false);
-        myRw2.setLayoutManager(gridLayoutManager);
-        adapter = new CustomAdapterGalleryImage(gallery);
-        adapter.setClickListener(this);
-        myRw2.setAdapter(adapter);
-
-
+        //Creo la classe retrofit,dandogli l'url base e il convertitore per il Json
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://uroboro8.github.io/JsonRepository/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        //Http handler è un'interfaccia,retrofit si occupa di istanziarla
-        HttpHandler service = retrofit.create(HttpHandler.class);
+        //Http handler è un'interfaccia,retrofit si occupa di implementare il metodo
+        service = retrofit.create(HttpHandler.class);
 
-        //Gli dico quale metodo usare
-        Call<Gallery> piatti = service.getAllImmaginiCustom();
+        //In questo mondo non ri-eseguo la chiamata http
+        //passando da portrait a landscape e viceversa
+        if(savedInstanceState == null) {
+            gallery = new ArrayList<>();
+            //Creo la request
+            Call<Gallery> request = service.getAllImmaginiCustom();
+            HttpCall(request);
+        }else{
+            gallery = savedInstanceState.getParcelableArrayList("gallery");
+        }
 
+        //Setto la RecyclerView per visualizzare gli elementi a grilia e gli imposto l'adapter per le mie immagini
+        //Recycler View
+        RecyclerView galleriaImmaginiRecyclerView = findViewById(R.id.recyclerViewGallery);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false);
+        galleriaImmaginiRecyclerView.setLayoutManager(gridLayoutManager);
+        //Adapter
+        adapter = new CustomAdapterGalleryImage(gallery);
+        adapter.setClickListener(this);
+        galleriaImmaginiRecyclerView.setAdapter(adapter);
+
+        ImageView back = findViewById(R.id.backGalleriaFoto);
+        back.setOnClickListener(v ->{
+            finish();
+        });
+    }
+
+    @Override
+    protected void onSaveInstanceState (Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("gallery",gallery);
+    }
+
+    public void HttpCall(Call<Gallery> request){
         //Faccio la chiamata al server
-        piatti.enqueue(new Callback<Gallery>() {
+        request.enqueue(new Callback<Gallery>() {
             @Override
             public void onResponse(Call<Gallery> call, Response<Gallery> response) {
                 if(response.isSuccessful()) {
                     List<ImageCustom> imageList = response.body().getGallery();
                     gallery.addAll(imageList);
                     adapter.notifyDataSetChanged();
+                    Log.e("JSON",gallery + "");
+                    REQUEST_CODE = "OK";
                 }
             }
-
             @Override
             public void onFailure(Call<Gallery> call, Throwable t) {
-
+                Log.e("failure",t.getMessage());
+                REQUEST_CODE = "BAD";
             }
         });
+    }
 
-        ImageView back = findViewById(R.id.backGalleriaFoto);
-
-        back.setOnClickListener(v ->{
-            finish();
-        });
+    @Override
+    public void onResume(){
+        super.onResume();
+        //Se i dati NON sono stati recuperati la prima volta(es. no internet),rifaccio la chiamata
+        if(REQUEST_CODE == "BAD"){
+            Call<Gallery> request = service.getAllImmaginiCustom();
+            HttpCall(request);
+        }
     }
 
     @Override

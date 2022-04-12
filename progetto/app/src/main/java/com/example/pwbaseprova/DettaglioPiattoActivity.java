@@ -27,12 +27,13 @@ public class DettaglioPiattoActivity extends AppCompatActivity implements Gestur
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dettaglio_piatto);
 
+        //Nasconde la barra in alto
         getSupportActionBar().hide();
 
+        //Animazione per lo swipe in entrata
         overridePendingTransition(R.anim.from_right_in, R.anim.from_left_out);
 
         gDetector = new GestureDetectorCompat(this,this);
-
 
         Intent intent = getIntent();
         Piatto piatto = intent.getParcelableExtra("item-value");
@@ -58,6 +59,7 @@ public class DettaglioPiattoActivity extends AppCompatActivity implements Gestur
     @Override
     public void finish() {
         super.finish();
+        //Animazione per lo swipe in uscita
         overridePendingTransition(R.anim.from_left_in, R.anim.from_right_out);
     }
 

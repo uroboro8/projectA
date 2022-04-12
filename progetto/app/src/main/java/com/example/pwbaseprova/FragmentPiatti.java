@@ -31,9 +31,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.ItemClickListener {
 
-    ArrayList<Piatto> piattiArrayList;
-    CustomAdapterPiatti customAdapterPiatti;
+    private ArrayList<Piatto> piattiArrayList;
+    private CustomAdapterPiatti customAdapterPiatti;
 
+    private HttpHandler service;
+
+    /*
+     *  NOTE_DONE = richiesta non fatta
+     *  OK =  successo
+     *  BAD = fallimento
+     */
+    private String  REQUEST_CODE = "NOT_DONE";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,52 +86,70 @@ public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.Item
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-       View rootView = inflater.inflate(R.layout.piatti, container, false);
 
-       piattiArrayList = new ArrayList<>();
-       RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPiatti);
-       recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-       customAdapterPiatti = new CustomAdapterPiatti(piattiArrayList);
-       customAdapterPiatti.setClickListener(this);
-       recyclerView.setAdapter(customAdapterPiatti);
+        View rootView = inflater.inflate(R.layout.piatti, container, false);
 
-       Retrofit retrofit = new Retrofit.Builder()
+        //Creo la classe retrofit,dandogli l'url base e il convertitore per il Json
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://uroboro8.github.io/JsonRepository/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        //Http handler è un'interfaccia,retrofit si occupa di istanziarla
-        HttpHandler service = retrofit.create(HttpHandler.class);
+        //Http handler è un'interfaccia,retrofit si occupa di implementare il metodo
+        service = retrofit.create(HttpHandler.class);
 
-        //Gli dico quale metodo usare
-        Call<Piatti> piatti = service.getAllPiatti();
+        //In questo mondo non ri-eseguo la chiamata http
+        //passando da portrait a landscape e viceversa
+        if(savedInstanceState == null) {
+            piattiArrayList = new ArrayList<>();
+            //Creo la request
+            Call<Piatti> request = service.getAllPiatti();
+            HttpCall(request);
+        }else{
+            piattiArrayList = savedInstanceState.getParcelableArrayList("piatti");
+        }
 
+        //Setto la RecyclerView per visualizzare gli elementi a grilia e gli imposto l'adapter per le mie immagini
+        //Recycler View
+        RecyclerView piattiRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPiatti);
+        piattiRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //Adapter
+        customAdapterPiatti = new CustomAdapterPiatti(piattiArrayList);
+        customAdapterPiatti.setClickListener(this);
+        piattiRecyclerView.setAdapter(customAdapterPiatti);
+
+        return rootView;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("piatti",piattiArrayList);
+    }
+
+    public void HttpCall(Call<Piatti> request){
         //Faccio la chiamata al server
-        piatti.enqueue(new Callback<Piatti>() {
+        request.enqueue(new Callback<Piatti>() {
             @Override
             public void onResponse(Call<Piatti> call, Response<Piatti> response) {
                 if(response.isSuccessful()) {
                     List<Piatto> piattiList = response.body().getPiatti();
                     piattiArrayList.addAll(piattiList);
-                    Log.e("JSON",piattiArrayList + "");
                     customAdapterPiatti.notifyDataSetChanged();
+                    REQUEST_CODE = "OK";
+                    Log.e("JSON",piattiArrayList + "");
                 }
             }
-
             @Override
             public void onFailure(Call<Piatti> call, Throwable t) {
-
+                REQUEST_CODE = "BAD";
+                Log.e("failure",t.getMessage());
             }
         });
-
-       return rootView;
     }
-
 
     @Override
     public void onItemClick(View view, int position) {
-        Log.e("dentro","dentro");
         Intent intent = new Intent(getActivity().getBaseContext(),DettaglioPiattoActivity.class);
         intent.putExtra("item-value",customAdapterPiatti.getItem(position));
         startActivity(intent);
@@ -132,12 +158,20 @@ public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.Item
     @Override
     public void onPause() {
         super.onPause();
+        //Impedisce che la lista sia cliccabile da altre tab
         customAdapterPiatti.setClickListener(null);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        //Quando torno su questa tab,ripristino l'ascolto dei click
         customAdapterPiatti.setClickListener(this);
+
+        //Se i dati NON sono stati recuperati la prima volta(es. no internet),rifaccio la chiamata
+        if(REQUEST_CODE == "BAD"){
+            Call<Piatti> request = service.getAllPiatti();
+            HttpCall(request);
+        }
     }
 }
