@@ -18,6 +18,7 @@ import com.example.pwbaseprova.gallery.ImageCustom;
 import com.example.pwbaseprova.itinerari.Itinerari;
 import com.example.pwbaseprova.piatti.Piatti;
 import com.example.pwbaseprova.piatti.Piatto;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +87,7 @@ public class GalleriaActivity extends AppCompatActivity implements  CustomAdapte
         adapter.setClickListener(this);
         galleriaImmaginiRecyclerView.setAdapter(adapter);
 
-        ImageView back = findViewById(R.id.backGalleriaFoto);
+        FloatingActionButton back = findViewById(R.id.buttonBackGalleria);
         back.setOnClickListener(v ->{
             finish();
         });
