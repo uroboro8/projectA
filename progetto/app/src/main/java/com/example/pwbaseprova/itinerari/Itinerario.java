@@ -16,7 +16,7 @@ public class Itinerario implements Parcelable {
     private String name;
 
     @SerializedName("duration")
-    private int duration;
+    private float duration;
 
     @SerializedName("price")
     private int price;
@@ -33,10 +33,42 @@ public class Itinerario implements Parcelable {
     @SerializedName("description")
     private String description;
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public float getDuration() {
+        return duration;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public List<String> getGallery() {
+        return gallery;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     protected Itinerario(Parcel in) {
         id = in.readInt();
         name = in.readString();
-        duration = in.readInt();
+        duration = in.readFloat();
         price = in.readInt();
         cover = in.readString();
         gallery = in.createStringArrayList();
@@ -55,70 +87,6 @@ public class Itinerario implements Parcelable {
             return new Itinerario[size];
         }
     };
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getCover() {
-        return cover;
-    }
-
-    public void setCover(String cover) {
-        this.cover = cover;
-    }
-
-    public List<String> getGallery() {
-        return gallery;
-    }
-
-    public void setGallery(List<String> gallery) {
-        this.gallery = gallery;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     @Override
     public String toString() {
@@ -143,7 +111,7 @@ public class Itinerario implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
         parcel.writeString(name);
-        parcel.writeInt(duration);
+        parcel.writeFloat(duration);
         parcel.writeInt(price);
         parcel.writeString(cover);
         parcel.writeStringList(gallery);

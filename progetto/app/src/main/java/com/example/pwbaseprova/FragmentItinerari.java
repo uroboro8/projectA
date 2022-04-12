@@ -88,7 +88,6 @@ public class FragmentItinerari extends Fragment implements CustomAdapterItinerar
         customAdapterItinerari.setClickListener(this);
         recyclerView.setAdapter(customAdapterItinerari);
 
-        //Inserire codice qua per fare cose
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://uroboro8.github.io/JsonRepository/")
@@ -99,10 +98,10 @@ public class FragmentItinerari extends Fragment implements CustomAdapterItinerar
         HttpHandler service = retrofit.create(HttpHandler.class);
 
         //Gli dico quale metodo usare
-        Call<Itinerari> itinerari = service.getAllItinerari();
+        Call<Itinerari> request = service.getAllItinerari();
 
         //Faccio la chiamata al server
-        itinerari.enqueue(new Callback<Itinerari>() {
+        request.enqueue(new Callback<Itinerari>() {
             @Override
             public void onResponse(Call<Itinerari> call, Response<Itinerari> response) {
                 if(response.isSuccessful()) {
@@ -115,7 +114,7 @@ public class FragmentItinerari extends Fragment implements CustomAdapterItinerar
 
             @Override
             public void onFailure(Call<Itinerari> call, Throwable t) {
-
+                Log.e("failure",t.getMessage());
             }
         });
 

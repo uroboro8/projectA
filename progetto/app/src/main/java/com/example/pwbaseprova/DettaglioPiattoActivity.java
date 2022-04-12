@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pwbaseprova.piatti.Piatto;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 public class DettaglioPiattoActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -39,7 +40,7 @@ public class DettaglioPiattoActivity extends AppCompatActivity implements Gestur
         TextView title = findViewById(R.id.titlePiatto);
         TextView description = findViewById(R.id.descriptionPiatto);
         ImageView image = findViewById(R.id.imagePiatto);
-        ImageView back = findViewById(R.id.backDettaglioPiatto);
+        FloatingActionButton back = findViewById(R.id.floatingActionButtonBack);
 
 
         title.setText(piatto.getName());
