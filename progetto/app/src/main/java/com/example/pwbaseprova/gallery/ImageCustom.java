@@ -18,6 +18,8 @@ public class ImageCustom implements Parcelable {
         image = in.readString();
     }
 
+    public ImageCustom(){}
+
     public static final Creator<ImageCustom> CREATOR = new Creator<ImageCustom>() {
         @Override
         public ImageCustom createFromParcel(Parcel in) {
@@ -36,6 +38,10 @@ public class ImageCustom implements Parcelable {
 
     public String getImage() {
         return image;
+    }
+
+    public void setImage(String image){
+        this.image = image;
     }
 
     @Override

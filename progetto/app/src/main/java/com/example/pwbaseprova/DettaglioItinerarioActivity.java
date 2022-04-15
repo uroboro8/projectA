@@ -1,16 +1,26 @@
 package com.example.pwbaseprova;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GestureDetectorCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.pwbaseprova.gallery.ImageCustom;
 import com.example.pwbaseprova.itinerari.Itinerario;
 import com.example.pwbaseprova.piatti.Piatto;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,10 +30,13 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class DettaglioItinerarioActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
+public class DettaglioItinerarioActivity extends AppCompatActivity implements CustomAdapterGalleryImage.ItemClickListener,
+        GestureDetector.OnGestureListener {
 
     private static final long VELOCITY_THRESHOLD=1000;
     private GestureDetectorCompat gDetector;
+
+    CustomAdapterGalleryImage adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,22 +78,35 @@ public class DettaglioItinerarioActivity extends AppCompatActivity implements Ge
         TextView category = findViewById(R.id.categoryItinerario);
         category.setText(itinerario.getType());
 
-        ArrayList<String> galleryItinerario = new ArrayList<>();
-        galleryItinerario.addAll(itinerario.getGallery());
-
-        ImageView imageItinerario1 = findViewById(R.id.imageItinerario1);
-        ImageView imageItinerario2 = findViewById(R.id.imageItinerario2);
-        ImageView imageItinerario3 = findViewById(R.id.imageItinerario3);
-        ImageView[] imageList = new ImageView[] { imageItinerario1, imageItinerario2, imageItinerario3};
-
-        for(int i=0;i<galleryItinerario.size();i++){
-            loadImage(galleryItinerario.get(i),imageList[i]);
+        ArrayList<ImageCustom> galleryItinerario =  new ArrayList<>();
+        for(String imageUrl : itinerario.getGallery()){
+            ImageCustom image = new ImageCustom();
+            image.setImage(imageUrl);
+            galleryItinerario.add(image);
         }
+
+        RecyclerView gallery = findViewById(R.id.itinerarioGallery);
+        gallery.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        //Adapter
+        adapter = new CustomAdapterGalleryImage(galleryItinerario);
+        adapter.setLayout(R.layout.custom_row_gallery_itinerario);
+        adapter.setClickListener(this);
+        gallery.setAdapter(adapter);
 
         FloatingActionButton back = findViewById(R.id.floatingActionButtonBack);
         back.setOnClickListener(v -> {
             finish();
         });
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        ImageCustom image = adapter.getItem(position);
+        GalleryDialogFragment dialogFragment=new GalleryDialogFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("image_url",image.getImage());
+        dialogFragment.setArguments(bundle);
+        dialogFragment.show(getSupportFragmentManager(),"My  Fragment");
     }
 
     private void loadImage(String imageLink,ImageView imageView){
@@ -138,5 +164,6 @@ public class DettaglioItinerarioActivity extends AppCompatActivity implements Ge
     public void onLongPress(MotionEvent motionEvent) {
 
     }
+
 
 }
