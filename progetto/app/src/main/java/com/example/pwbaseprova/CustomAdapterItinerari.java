@@ -52,8 +52,14 @@ public class CustomAdapterItinerari extends RecyclerView.Adapter<CustomAdapterIt
         if (itinerario.getCover() != null && itinerario.getCover().trim().length() != 0)
             Picasso.get().load(itinerario.getCover()).into(imageView);
 
-        TextView textView1 = holder.itemText1;
-        textView1.setText(itinerario.getDuration()+"h - "+itinerario.getPrice()+"$");
+        TextView duration = holder.itemText1;
+        String durationString = String.valueOf(itinerario.getDuration());
+        String[] durationSplit = durationString.split("\\.");
+        if (durationSplit[1].equals("0"))
+            duration.setText(durationSplit[0] + "h - "+itinerario.getPrice()+"€");
+        else
+            duration.setText((durationString) + "h - "+itinerario.getPrice()+"€");
+
     }
 
     @Override
