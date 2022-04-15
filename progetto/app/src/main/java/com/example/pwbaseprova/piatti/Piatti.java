@@ -13,7 +13,7 @@ public class Piatti {
         return piatti;
     }
 
-    public void setPiatti(List<Piatto> piatti) {
+    /*public void setPiatti(List<Piatto> piatti) {
         this.piatti = piatti;
-    }
+    }*/
 }

@@ -29,11 +29,17 @@ public class MainActivity extends AppCompatActivity implements FragmentHome.Clic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Nascondi la barra di default
         getSupportActionBar().hide();
+
+        //Metto app in full-screen
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //Disattivo modalità notte
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         setContentView(R.layout.activity_main);
+
         viewPager = findViewById(R.id.pager);
         buildTabLayout();
     }
@@ -47,14 +53,9 @@ public class MainActivity extends AppCompatActivity implements FragmentHome.Clic
 
         //EFFETTI VISIVI TRANSIZIONI TRA FRAGMENT:
         viewPager.setPageTransformer(new DepthPageTransformer());
-        //viewPager.setPageTransformer(new ZoomOutPageTransformer());
+
         viewPager.setAdapter(adapter);
-/*
-        ArrayList<String> nomiTab = new ArrayList<>();
-        nomiTab.add("Home");
-        nomiTab.add("Menù");
-        nomiTab.add("Itinerari");
-        nomiTab.add("Contatti");*/
+
 
         ArrayList<Integer> iconeTab = new ArrayList<>();
 
@@ -69,10 +70,8 @@ public class MainActivity extends AppCompatActivity implements FragmentHome.Clic
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
                     tab.setIcon(iconeTab.get(position));
-                    //tab.setText(nomiTab.get(position));
                 }).attach();
         //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-
 
     }
 
@@ -82,45 +81,7 @@ public class MainActivity extends AppCompatActivity implements FragmentHome.Clic
     }
 
 
-    private class ZoomOutPageTransformer implements ViewPager2.PageTransformer {
-        private static final float MIN_SCALE = 0.85f;
-        private static final float MIN_ALPHA = 0.5f;
-
-        public void transformPage(View view, float position) {
-            int pageWidth = view.getWidth();
-            int pageHeight = view.getHeight();
-
-            if (position < -1) { // [-Infinity,-1)
-                // This page is way off-screen to the left.
-                view.setAlpha(0f);
-
-            } else if (position <= 1) { // [-1,1]
-                // Modify the default slide transition to shrink the page as well
-                float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
-                float vertMargin = pageHeight * (1 - scaleFactor) / 2;
-                float horzMargin = pageWidth * (1 - scaleFactor) / 2;
-                if (position < 0) {
-                    view.setTranslationX(horzMargin - vertMargin / 2);
-                } else {
-                    view.setTranslationX(-horzMargin + vertMargin / 2);
-                }
-
-                // Scale the page down (between MIN_SCALE and 1)
-                view.setScaleX(scaleFactor);
-                view.setScaleY(scaleFactor);
-
-                // Fade the page relative to its size.
-                view.setAlpha(MIN_ALPHA +
-                        (scaleFactor - MIN_SCALE) /
-                                (1 - MIN_SCALE) * (1 - MIN_ALPHA));
-
-            } else { // (1,+Infinity]
-                // This page is way off-screen to the right.
-                view.setAlpha(0f);
-            }
-        }
-    }
-
+    //Animazione per lo swipe
     private class DepthPageTransformer implements ViewPager2.PageTransformer {
         private static final float MIN_SCALE = 0.75f;
 

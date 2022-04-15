@@ -84,6 +84,7 @@ public class GalleriaActivity extends AppCompatActivity implements  CustomAdapte
         galleriaImmaginiRecyclerView.setLayoutManager(gridLayoutManager);
         //Adapter
         adapter = new CustomAdapterGalleryImage(gallery);
+        adapter.setLayout(R.layout.custom_row_gallery);
         adapter.setClickListener(this);
         galleriaImmaginiRecyclerView.setAdapter(adapter);
 

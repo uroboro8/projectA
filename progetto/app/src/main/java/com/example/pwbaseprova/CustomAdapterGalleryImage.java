@@ -23,7 +23,7 @@ public class CustomAdapterGalleryImage extends RecyclerView.Adapter<CustomAdapte
 
     private List<ImageCustom> gallery;
     private ItemClickListener mClickListener;
-
+    private int layoutId;
 
 
     //Passiamo i dati tramite il costruttore
@@ -31,13 +31,16 @@ public class CustomAdapterGalleryImage extends RecyclerView.Adapter<CustomAdapte
         gallery = piattiList;
     }
 
+    public  void setLayout(int layout){
+        this.layoutId = layout;
+    }
     //Inflate del layout dall'xml
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.custom_row_gallery,parent,false);
+        View view = inflater.inflate(this.layoutId,parent,false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
