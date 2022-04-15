@@ -20,4 +20,6 @@ public interface  HttpHandler {
 
     @GET("galleria/gallery.json")
     Call<Gallery> getAllImmaginiCustom();
+
+
 }

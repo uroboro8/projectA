@@ -137,8 +137,8 @@
 
                 <LinearLayout
                     android:id="@+id/linearLayout11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="300sp"
+                    android:layout_height="300sp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -147,11 +147,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
 
-                    <ImageView
-                        android:id="@+id/imageViewMappa"
-                        android:layout_width="300dp"
-                        android:layout_height="300dp"
-                        android:src="@drawable/mappa" />
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/mapViewPosition"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
