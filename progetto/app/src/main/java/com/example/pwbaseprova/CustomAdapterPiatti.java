@@ -93,9 +93,10 @@ public class CustomAdapterPiatti extends RecyclerView.Adapter<CustomAdapterPiatt
         this.mClickListener = itemClickListener;
     }
 
-    //Da fare per il filtro
-    void updateList(){
-        //notifyDataSetChanged();
+    //Filtro
+    void updateList(List<Piatto> filteredList){
+        this.piatti = filteredList;
+        notifyDataSetChanged();
     }
 
     //L'activity padre implementa questo metodo per rispondere ai click

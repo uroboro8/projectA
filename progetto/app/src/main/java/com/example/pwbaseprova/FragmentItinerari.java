@@ -11,10 +11,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import com.example.pwbaseprova.itinerari.Itinerari;
 import com.example.pwbaseprova.itinerari.Itinerario;
-import com.example.pwbaseprova.piatti.Piatti;
+import com.example.pwbaseprova.piatti.Piatto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FragmentItinerari extends Fragment implements CustomAdapterItinerari.ItemClickListener{
 
     private ArrayList<Itinerario> itinerariArrayList;
+    private ArrayList<Itinerario> filteredList;
     private CustomAdapterItinerari customAdapterItinerari;
 
     private HttpHandler service;
@@ -43,6 +47,8 @@ public class FragmentItinerari extends Fragment implements CustomAdapterItinerar
      *  BAD = fallimento
      */
     private String  REQUEST_CODE = "NOT_DONE";
+
+    private AutoCompleteTextView menu;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -103,11 +109,19 @@ public class FragmentItinerari extends Fragment implements CustomAdapterItinerar
         //passando da portrait a landscape e viceversa
         if(savedInstanceState == null) {
             itinerariArrayList = new ArrayList<>();
+            filteredList = new ArrayList<>();
+            customAdapterItinerari = new CustomAdapterItinerari(itinerariArrayList);
             //Creo la request
             Call<Itinerari> request = service.getAllItinerari();
             HttpCall(request);
         }else{
             itinerariArrayList = savedInstanceState.getParcelableArrayList("itinerari");
+            filteredList = savedInstanceState.getParcelableArrayList("itinerari-filtered");
+            if(!filteredList.isEmpty()){
+                customAdapterItinerari = new CustomAdapterItinerari(filteredList);
+            }else{
+                customAdapterItinerari = new CustomAdapterItinerari(itinerariArrayList);
+            }
         }
 
         //Setto la RecyclerView per visualizzare gli elementi a grilia e gli imposto l'adapter per le mie immagini
@@ -115,9 +129,10 @@ public class FragmentItinerari extends Fragment implements CustomAdapterItinerar
         RecyclerView itinerariRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewItinerari);
         itinerariRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //Adapter
-        customAdapterItinerari = new CustomAdapterItinerari(itinerariArrayList);
         customAdapterItinerari.setClickListener(this);
         itinerariRecyclerView.setAdapter(customAdapterItinerari);
+
+        menu = rootView.findViewById(R.id.filterItinerari);
 
         return rootView;
     }
@@ -126,6 +141,7 @@ public class FragmentItinerari extends Fragment implements CustomAdapterItinerar
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putParcelableArrayList("itinerari",itinerariArrayList);
+        outState.putParcelableArrayList("itinerari-filtered",filteredList);
     }
 
 
@@ -174,5 +190,29 @@ public class FragmentItinerari extends Fragment implements CustomAdapterItinerar
             Call<Itinerari> request = service.getAllItinerari();
             HttpCall(request);
         }
+
+        String[] filter = getResources().getStringArray(R.array.filter_itinerari);
+        ArrayAdapter adapter = new ArrayAdapter(getContext(),R.layout.filter_item,filter);
+        menu.setAdapter(adapter);
+        menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View arg1, int pos,
+                                    long id) {
+                String menuChoice = (String) parent.getItemAtPosition(pos);
+                if(itinerariArrayList != null){
+                    filteredList.clear();
+                    if(menuChoice.equals("Tutti")){
+                        customAdapterItinerari.updateList(itinerariArrayList);
+                    }
+                    else {
+                        for (Itinerario itinerario : itinerariArrayList) {
+                            if (itinerario.getType().toLowerCase().equals(menuChoice.toLowerCase()))
+                                filteredList.add(itinerario);
+                        }
+                        customAdapterItinerari.updateList(filteredList);
+                    }
+                }
+            }
+        });
     }
 }

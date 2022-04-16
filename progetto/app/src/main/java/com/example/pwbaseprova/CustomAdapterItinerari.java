@@ -101,8 +101,9 @@ public class CustomAdapterItinerari extends RecyclerView.Adapter<CustomAdapterIt
     }
 
     //Da fare per il filtro
-    void updateList(){
-       // notifyDataSetChanged();
+    void updateList(List<Itinerario> filteredList){
+        this.itinerari = filteredList;
+       notifyDataSetChanged();
     }
 
     //L'activity padre implementa questo metodo per rispondere ai click

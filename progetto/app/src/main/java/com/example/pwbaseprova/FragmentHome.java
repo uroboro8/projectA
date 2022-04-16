@@ -91,9 +91,9 @@ public class FragmentHome extends Fragment {
         ///Image Slider
         ArrayList imageList = new ArrayList<SlideModel>();// Create image list
 
-        imageList.add(new SlideModel("https://www.maridacaterini.it/wp-content/uploads/2020/04/Alessandro-Borghese-4-Ristoranti-Venezia.jpg", "Vincitore di 4 ristoranti 2021",ScaleTypes.CENTER_CROP));
-        imageList.add(new SlideModel("https://www.sienafree.it/images/notizie/turismo/agriturismo-pienza.jpg", "L'agriturismo",ScaleTypes.CENTER_CROP));
-        imageList.add(new SlideModel("https://media-cdn.tripadvisor.com/media/photo-s/0d/b1/e1/53/staff-al-completo.jpg","Lo staff", ScaleTypes.CENTER_CROP));
+        imageList.add(new SlideModel(R.drawable.borghese, "Vincitore di 4 ristoranti 2021",ScaleTypes.CENTER_CROP));
+        imageList.add(new SlideModel(R.drawable.agriturismo, "L'agriturismo",ScaleTypes.CENTER_CROP));
+        imageList.add(new SlideModel(R.drawable.maneggio,"Il maneggio", ScaleTypes.CENTER_CROP));
 
         ImageSlider imageSlider = view.findViewById(R.id.image_slider);
         imageSlider.setImageList(imageList);

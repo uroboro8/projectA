@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import com.example.pwbaseprova.piatti.Piatti;
 import com.example.pwbaseprova.piatti.Piatto;
@@ -32,6 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.ItemClickListener {
 
     private ArrayList<Piatto> piattiArrayList;
+    private ArrayList<Piatto> filteredList;
     private CustomAdapterPiatti customAdapterPiatti;
 
     private HttpHandler service;
@@ -42,6 +46,10 @@ public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.Item
      *  BAD = fallimento
      */
     private String  REQUEST_CODE = "NOT_DONE";
+
+    //Filtro
+    private AutoCompleteTextView menu;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -102,11 +110,19 @@ public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.Item
         //passando da portrait a landscape e viceversa
         if(savedInstanceState == null) {
             piattiArrayList = new ArrayList<>();
+            filteredList = new ArrayList<>();
+            customAdapterPiatti = new CustomAdapterPiatti(piattiArrayList);
             //Creo la request
             Call<Piatti> request = service.getAllPiatti();
             HttpCall(request);
         }else{
             piattiArrayList = savedInstanceState.getParcelableArrayList("piatti");
+            filteredList = savedInstanceState.getParcelableArrayList("piatti-filtered");
+            if(!filteredList.isEmpty()){
+                customAdapterPiatti = new CustomAdapterPiatti(filteredList);
+            }else{
+                customAdapterPiatti = new CustomAdapterPiatti(piattiArrayList);
+            }
         }
 
         //Setto la RecyclerView per visualizzare gli elementi a grilia e gli imposto l'adapter per le mie immagini
@@ -114,9 +130,10 @@ public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.Item
         RecyclerView piattiRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPiatti);
         piattiRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //Adapter
-        customAdapterPiatti = new CustomAdapterPiatti(piattiArrayList);
         customAdapterPiatti.setClickListener(this);
         piattiRecyclerView.setAdapter(customAdapterPiatti);
+
+        menu = rootView.findViewById(R.id.filterPiatti);
 
         return rootView;
     }
@@ -125,6 +142,7 @@ public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.Item
     public void onSaveInstanceState(Bundle outState){
         super.onSaveInstanceState(outState);
         outState.putParcelableArrayList("piatti",piattiArrayList);
+        outState.putParcelableArrayList("piatti-filtered",filteredList);
     }
 
     public void HttpCall(Call<Piatti> request){
@@ -173,5 +191,29 @@ public class FragmentPiatti extends Fragment implements CustomAdapterPiatti.Item
             Call<Piatti> request = service.getAllPiatti();
             HttpCall(request);
         }
+
+        String[] filter = getResources().getStringArray(R.array.filter_piatti);
+        ArrayAdapter adapter = new ArrayAdapter(getContext(),R.layout.filter_item,filter);
+        menu.setAdapter(adapter);
+        menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View arg1, int pos,
+                                    long id) {
+                String menuChoice = (String) parent.getItemAtPosition(pos);
+                if(piattiArrayList != null){
+                    filteredList.clear();
+                    if(menuChoice.equals("Tutti")){
+                        customAdapterPiatti.updateList(piattiArrayList);
+                    }
+                    else {
+                        for (Piatto piatto : piattiArrayList) {
+                            if (piatto.getType().toLowerCase().equals(menuChoice.toLowerCase()))
+                                filteredList.add(piatto);
+                        }
+                        customAdapterPiatti.updateList(filteredList);
+                    }
+                }
+            }
+        });
     }
 }

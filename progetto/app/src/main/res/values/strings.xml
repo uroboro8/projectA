@@ -2,4 +2,21 @@
     <string name="app_name">Collina Al Sole</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="filter_piatti">
+        <item>Tutti</item>
+        <item>Antipasto</item>
+        <item>Primo</item>
+        <item>Secondo</item>
+        <item>Dolce</item>
+        <item>Vino</item>
+    </string-array>
+
+    <string-array name="filter_itinerari">
+        <item>Tutti</item>
+        <item>Singolo</item>
+        <item>Coppia</item>
+        <item>Famiglie</item>
+    </string-array>
+
 </resources>
