@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements FragmentHome.Clic
 
         viewPager.setAdapter(adapter);
 
-
         ArrayList<Integer> iconeTab = new ArrayList<>();
 
         iconeTab.add(R.drawable.ic_baseline_home_48);

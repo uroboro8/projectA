@@ -2,7 +2,6 @@ package com.example.pwbaseprova;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
-import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,13 +10,9 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.example.pwbaseprova.gallery.Gallery;
 import com.example.pwbaseprova.gallery.ImageCustom;
-import com.example.pwbaseprova.itinerari.Itinerari;
-import com.example.pwbaseprova.piatti.Piatti;
-import com.example.pwbaseprova.piatti.Piatto;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -88,7 +83,7 @@ public class GalleriaActivity extends AppCompatActivity implements  CustomAdapte
         adapter.setClickListener(this);
         galleriaImmaginiRecyclerView.setAdapter(adapter);
 
-        FloatingActionButton back = findViewById(R.id.buttonBackGalleria);
+        FloatingActionButton back = findViewById(R.id.buttonBackManeggio);
         back.setOnClickListener(v ->{
             finish();
         });
