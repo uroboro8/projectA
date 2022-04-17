@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,6 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
@@ -19,7 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  * Use the {@link FragmentContatti#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentContatti extends Fragment {
+public class FragmentContatti extends Fragment implements OnMapReadyCallback {
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -85,6 +92,25 @@ public class FragmentContatti extends Fragment {
             startActivity(intent);
         });
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
         return rootView;
     }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        LatLng agriturismo = new LatLng(43.4972223, 10.7772087);
+
+        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+        googleMap.addMarker(new MarkerOptions()
+                .position(agriturismo)
+                .title("La collina al Sole"));
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(agriturismo));
+        googleMap.moveCamera(CameraUpdateFactory.zoomTo(15));
+    }
+
 }
