@@ -57,7 +57,7 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center">
+                    android:gravity="start|center_vertical">
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/callButton"
@@ -66,11 +66,12 @@
                         android:layout_marginLeft="32sp"
                         android:clickable="true"
                         android:elevation="0dp"
-                        app:elevation="0dp"
                         android:src="@drawable/ic_baseline_local_phone_48"
+                        app:elevation="0dp"
                         app:rippleColor="#FFFFFF" />
 
                     <TextView
+                        android:id="@+id/textViewCall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8sp"
@@ -82,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50sp"
-                    android:gravity="center">
+                    android:gravity="start|center_vertical">
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/mailButton"
@@ -91,10 +92,11 @@
                         android:layout_marginLeft="32sp"
                         android:clickable="true"
                         android:elevation="0dp"
-                        app:elevation="0dp"
-                        android:src="@drawable/ic_baseline_mail_outline_48" />
+                        android:src="@drawable/ic_baseline_mail_outline_48"
+                        app:elevation="0dp" />
 
                     <TextView
+                        android:id="@+id/textViewMail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8sp"

@@ -3,6 +3,7 @@ package com.example.pwbaseprova;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -30,6 +31,37 @@ public class ManeggioActivity extends AppCompatActivity {
             finish();
         });
 
+        //prendiamo l'id di ogni immagine statica
+        ImageView imageView = findViewById(R.id.imageCoverManeggio2);
+        ImageView imageView1 = findViewById(R.id.imageCoverManeggio3);
+        ImageView imageView2 = findViewById(R.id.imageCoverManeggio4);
+
+
+        //qui facciamo apparire l'immagine dentro ad un fragment per poi zoommarla a piacere
+        imageView1.setOnClickListener(v -> {
+            GalleryDialogFragment dialogFragment=new GalleryDialogFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("image_url","https://raw.githubusercontent.com/uroboro8/ImageRepository/main/images/m8.jpg");
+            dialogFragment.setArguments(bundle);
+            dialogFragment.show(getSupportFragmentManager(),"My  Fragment");
+        });
+
+        imageView2.setOnClickListener(v -> {
+            GalleryDialogFragment dialogFragment=new GalleryDialogFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("image_url","https://raw.githubusercontent.com/uroboro8/ImageRepository/main/images/m10.jpg");
+            dialogFragment.setArguments(bundle);
+            dialogFragment.show(getSupportFragmentManager(),"My  Fragment");
+        });
+
+        imageView.setOnClickListener(v -> {
+            GalleryDialogFragment dialogFragment=new GalleryDialogFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("image_url","https://raw.githubusercontent.com/uroboro8/ImageRepository/main/images/m9.jpg");
+            dialogFragment.setArguments(bundle);
+            dialogFragment.show(getSupportFragmentManager(),"My  Fragment");
+        });
+
         buildSliderLayout();
     }
 
@@ -43,8 +75,17 @@ public class ManeggioActivity extends AppCompatActivity {
         imageList.add(new SlideModel("https://raw.githubusercontent.com/uroboro8/ImageRepository/main/images/m4.jpg", ScaleTypes.CENTER_CROP));
         imageList.add(new SlideModel("https://raw.githubusercontent.com/uroboro8/ImageRepository/main/images/m5.jpg", ScaleTypes.CENTER_CROP));
 
+        //qui apriamo le immagini dello slider in un fragment e zoommiamo
         ImageSlider imageSlider = findViewById(R.id.image_slider_maneggio);
         imageSlider.setImageList(imageList);
+        imageSlider.setItemClickListener(position -> {
+            SlideModel image = (SlideModel) imageList.get(position);
+            GalleryDialogFragment dialogFragment=new GalleryDialogFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("image_url",image.getImageUrl());
+            dialogFragment.setArguments(bundle);
+            dialogFragment.show(getSupportFragmentManager(),"My  Fragment");
+        });
     }
 
     @Override

@@ -92,6 +92,23 @@ public class FragmentContatti extends Fragment implements OnMapReadyCallback {
             startActivity(intent);
         });
 
+        TextView textCall = rootView.findViewById(R.id.textViewCall);
+        textCall.setOnClickListener(v->{
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:058833215"));
+            startActivity(intent);
+        });
+
+        TextView textMail = rootView.findViewById(R.id.textViewMail);
+        textMail.setOnClickListener(v->{
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Uri data = Uri.parse("mailto:collinaalsole@gmail.com?subject=" +
+                    Uri.encode("Informazioni") +
+                    "&body=" + Uri.encode("Salve,\n le scrivo per informazioni..."));
+            intent.setData(data);
+            startActivity(intent);
+        });
+
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
