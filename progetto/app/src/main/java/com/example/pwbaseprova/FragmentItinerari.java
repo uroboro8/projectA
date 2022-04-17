@@ -17,8 +17,6 @@ import android.widget.AutoCompleteTextView;
 
 import com.example.pwbaseprova.itinerari.Itinerari;
 import com.example.pwbaseprova.itinerari.Itinerario;
-import com.example.pwbaseprova.piatti.Piatto;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -155,7 +153,6 @@ public class FragmentItinerari extends Fragment implements CustomAdapterItinerar
                     itinerariArrayList.addAll(itinerariList);
                     customAdapterItinerari.notifyDataSetChanged();
                     REQUEST_CODE = "OK";
-                    Log.e("JSON",itinerariArrayList + "");
                 }
             }
             @Override
