@@ -4,15 +4,10 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
+
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import com.example.pwbaseprova.gallery.ImageCustom;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
 

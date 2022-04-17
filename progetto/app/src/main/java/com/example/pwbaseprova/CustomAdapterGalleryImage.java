@@ -1,20 +1,19 @@
 package com.example.pwbaseprova;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pwbaseprova.gallery.ImageCustom;
-import com.example.pwbaseprova.piatti.Piatto;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -91,11 +90,6 @@ public class CustomAdapterGalleryImage extends RecyclerView.Adapter<CustomAdapte
     //Abilita la possibilità di ascoltare i click
     void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
-    }
-
-    //Da fare per il filtro
-    void updateList(){
-        //notifyDataSetChanged();
     }
 
     //L'activity padre implementa questo metodo per rispondere ai click
