@@ -1,8 +1,11 @@
 package com.example.pwbaseprova;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GestureDetectorCompat;
 
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.widget.ImageView;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -12,7 +15,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class ManeggioActivity extends AppCompatActivity {
+public class ManeggioActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
+
+    private static final long VELOCITY_THRESHOLD=1000;
+    private GestureDetectorCompat gDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,8 @@ public class ManeggioActivity extends AppCompatActivity {
         back.setOnClickListener(v -> {
             finish();
         });
+
+        gDetector = new GestureDetectorCompat(this,this);
 
         //prendiamo l'id di ogni immagine statica
         ImageView imageView = findViewById(R.id.imageCoverManeggio2);
@@ -93,5 +101,48 @@ public class ManeggioActivity extends AppCompatActivity {
         super.finish();
         //Animazione per lo swipe in uscita
         overridePendingTransition(R.anim.from_left_in, R.anim.from_right_out);
+    }
+
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float vX, float vY) {
+        if(Math.abs(vX) > Math.abs(vY)){
+            if(vX < VELOCITY_THRESHOLD)
+                return false;
+            if(vX >= 0) {
+                finish();
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
     }
 }

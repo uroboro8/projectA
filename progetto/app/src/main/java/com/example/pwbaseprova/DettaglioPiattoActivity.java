@@ -105,5 +105,4 @@ public class DettaglioPiattoActivity extends AppCompatActivity implements Gestur
 
     }
 
-
 }
