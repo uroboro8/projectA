@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EEEEEE"
@@ -57,21 +58,19 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <TableLayout
-                        android:id="@+id/tableLayout"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginEnd="16dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="32dp">
 
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center|start"
+                            android:orientation="horizontal">
 
                             <com.google.android.material.floatingactionbutton.FloatingActionButton
                                 android:id="@+id/callButton"
@@ -80,22 +79,24 @@
                                 android:layout_marginLeft="32sp"
                                 android:clickable="true"
                                 android:elevation="0dp"
-                                app:elevation="0dp"
-                                android:src="@drawable/ic_baseline_local_phone_48" />
+                                android:src="@drawable/ic_baseline_local_phone_48"
+                                app:elevation="0dp" />
 
                             <TextView
+                                android:id="@+id/textViewCall"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8sp"
-                                android:text="0588 33215" />
+                                android:text="0588 33215"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
 
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="32sp"
-                            android:gravity="center">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center|start"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="64dp">
 
                             <com.google.android.material.floatingactionbutton.FloatingActionButton
                                 android:id="@+id/mailButton"
@@ -104,37 +105,57 @@
                                 android:layout_marginLeft="32sp"
                                 android:clickable="true"
                                 android:elevation="0dp"
-                                app:elevation="0dp"
-                                android:src="@drawable/ic_baseline_mail_outline_48" />
+                                android:src="@drawable/ic_baseline_mail_outline_48"
+                                app:elevation="0dp" />
 
                             <TextView
+                                android:id="@+id/textViewMail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8sp"
-                                android:text="collinaalsole@gmail.com" />
+                                android:text="collinaalsole@gmail.com"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
 
-                        </TableRow>
+                    </LinearLayout>
 
-                    </TableLayout>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="400sp"
+                        android:layout_height="300sp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="64dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:cardCornerRadius="30sp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                        <com.google.android.gms.maps.MapView
-                            android:id="@+id/mapView"
-                            android:layout_width="0dp"
-                            android:layout_height="200sp"
-                            android:layout_marginStart="64dp"
-                            android:layout_marginTop="64dp"
-                            android:layout_marginEnd="64dp"
-                            android:layout_marginBottom="32dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
 
+                                <fragment
+                                    android:id="@+id/map"
+                                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    map:cameraTargetLat="43.4972223"
+                                    map:cameraTargetLng="10.7772087"
+                                    map:cameraTilt="30"
+                                    map:cameraZoom="13"
+                                    map:uiCompass="false"
+                                    map:uiRotateGestures="true"
+                                    map:uiZoomControls="true" />
+                            </FrameLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
                 </LinearLayout>
             </ScrollView>
 
