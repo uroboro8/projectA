@@ -112,7 +112,6 @@ public class FragmentContatti extends Fragment implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         return rootView;
     }
 
@@ -128,6 +127,7 @@ public class FragmentContatti extends Fragment implements OnMapReadyCallback {
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(agriturismo));
         googleMap.moveCamera(CameraUpdateFactory.zoomTo(15));
+        googleMap.getUiSettings().setAllGesturesEnabled(false);
     }
 
 }

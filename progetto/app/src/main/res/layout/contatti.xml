@@ -43,6 +43,48 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+                app:cardCornerRadius="30sp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <fragment
+                            android:id="@+id/map"
+                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            map:cameraTargetLat="43.4972223"
+                            map:cameraTargetLng="10.7772087"
+                            map:cameraTilt="30"
+                            map:cameraZoom="13"
+                            map:uiCompass="false"
+                            map:uiRotateGestures="true"
+                            map:uiZoomControls="true" />
+                    </FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
             <TableLayout
                 android:id="@+id/tableLayout"
                 android:layout_width="0dp"
@@ -75,7 +117,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8sp"
-                        android:text="0588 33215" />
+                        android:text="0588 33215"
+                        android:textColor="@color/black"/>
 
                 </TableRow>
 
@@ -100,37 +143,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8sp"
-                        android:text="collinaalsole@gmail.com" />
+                        android:text="collinaalsole@gmail.com"
+                        android:textColor="@color/black"/>
 
                 </TableRow>
 
             </TableLayout>
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="64dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tableLayout">
-
-                <fragment
-                    android:id="@+id/map"
-                    android:name="com.google.android.gms.maps.SupportMapFragment"
-                    map:cameraTargetLat="43.4972223"
-                    map:cameraTargetLng="10.7772087"
-                    map:cameraTilt="30"
-                    map:cameraZoom="13"
-                    map:uiCompass="false"
-                    map:uiRotateGestures="true"
-                    map:uiZoomControls="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
