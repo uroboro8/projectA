@@ -1,5 +1,7 @@
 package com.example.pwbaseprova;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,9 +66,25 @@ public class FragmentContatti extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view = inflater.inflate(R.layout.contatti, container, false);
-        //Inserire codice per fare cose qua
+       View rootView = inflater.inflate(R.layout.contatti, container, false);
 
-        return view;
+        FloatingActionButton callButton = rootView.findViewById(R.id.callButton);
+        callButton.setOnClickListener(v->{
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:058833215"));
+            startActivity(intent);
+        });
+
+        FloatingActionButton mailButton = rootView.findViewById(R.id.mailButton);
+        mailButton.setOnClickListener(v->{
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Uri data = Uri.parse("mailto:collinaalsole@gmail.com?subject=" +
+                    Uri.encode("Informazioni") +
+                    "&body=" + Uri.encode("Salve,\n le scrivo per informazioni..."));
+            intent.setData(data);
+            startActivity(intent);
+        });
+
+        return rootView;
     }
 }

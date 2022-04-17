@@ -38,127 +38,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewContatti">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:id="@+id/linearLayout9"
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:gravity="center">
 
-                    <ImageView
-                        android:id="@+id/imageViewTelefono"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginEnd="3dp"
-                        android:src="@drawable/outline_phone_24" />
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/callButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="32sp"
+                        android:clickable="true"
+                        android:elevation="0dp"
+                        app:elevation="0dp"
+                        android:src="@drawable/ic_baseline_local_phone_48"
+                        app:rippleColor="#FFFFFF" />
 
                     <TextView
-                        android:id="@+id/textViewTelefono"
-                        android:layout_width="247dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="9dp"
-                        android:gravity="start|center_vertical"
-                        android:text="Telefono: 387 559 2598\nFax: 5411615466"
-                        android:textColor="#000000" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8sp"
+                        android:text="0588 33215" />
 
-                </LinearLayout>
+                </TableRow>
 
-                <LinearLayout
-                    android:id="@+id/linearLayout8"
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+                    android:layout_marginTop="50sp"
+                    android:gravity="center">
 
-                    <ImageView
-                        android:id="@+id/imageViewPosizione"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginEnd="3dp"
-                        android:src="@drawable/outline_location_on_24" />
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/mailButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="32sp"
+                        android:clickable="true"
+                        android:elevation="0dp"
+                        app:elevation="0dp"
+                        android:src="@drawable/ic_baseline_mail_outline_48" />
 
                     <TextView
-                        android:id="@+id/textViewPosizione"
-                        android:layout_width="247dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="9dp"
-                        android:gravity="start|center_vertical"
-                        android:text="Via Corsolungo, 2, 50010, Toscana"
-                        android:textColor="#000000" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8sp"
+                        android:text="collinaalsole@gmail.com" />
 
-                </LinearLayout>
+                </TableRow>
 
-                <LinearLayout
-                    android:id="@+id/linearLayout10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toTopOf="@+id/linearLayout11"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+            </TableLayout>
 
-                    <ImageView
-                        android:id="@+id/imageViewEmail"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginEnd="3dp"
-                        android:src="@drawable/outline_alternate_email_24" />
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapViewPosition"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="32dp"
+                android:layout_weight="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
-                    <TextView
-                        android:id="@+id/textViewEmail"
-                        android:layout_width="247dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="9dp"
-                        android:gravity="start|center_vertical"
-                        android:text="Email: ristorante@risto.it"
-                        android:textColor="#000000" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linearLayout11"
-                    android:layout_width="300sp"
-                    android:layout_height="300sp"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
-
-                    <com.google.android.gms.maps.MapView
-                        android:id="@+id/mapViewPosition"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-                </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
