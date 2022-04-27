@@ -67,6 +67,7 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="Piatto"
+                    android:fontFamily="@font/quando"
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -78,6 +79,7 @@
                     android:layout_marginTop="24sp"
                     android:layout_marginBottom="8sp"
                     android:gravity="center"
+                    android:fontFamily="@font/quando"
                     android:text="Descrizione del piatto"
                     android:textColor="@color/black"
                     android:textSize="20sp" />

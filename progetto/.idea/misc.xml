@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ifoa/.gradle/caches/transforms-3/7764c97f9d5a9f157afd542e267cfd96/transformed/ImageSlideshow-0.1.0/res/layout/pager_row.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/drawable/app_icon_background.xml" value="0.126" />
         <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout-land/activity_dettaglio_piatto.xml" value="0.21516754850088182" />
         <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout-land/home.xml" value="0.21516754850088182" />
@@ -15,6 +16,7 @@
         <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout/home.xml" value="0.20108695652173914" />
         <entry key="..\:/Users/ifoa/Desktop/projectA/progetto/app/src/main/res/layout/piatti.xml" value="0.20108695652173914" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/drawable/.xml" value="0.1765" />
+        <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/drawable/gradient.xml" value="0.1825" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.1765" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/drawable/ic_baseline_accessibility_new_24.xml" value="0.1765" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1765" />
@@ -45,16 +47,17 @@
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/activity_main.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/activity_maneggio.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/activity_splash_screen.xml" value="0.22327898550724637" />
-        <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/contatti.xml" value="0.1" />
+        <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/contatti.xml" value="0.2" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/custom_gallery_item.xml" value="0.2164855072463768" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/custom_row_gallery.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/custom_row_gallery_itinerario.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/custom_row_itinerari.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/custom_row_piatti.xml" value="0.4" />
+        <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/filter_item.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/filter_piatti_item.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/fragment_gallery_dialog.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/home.xml" value="0.264" />
-        <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/itinerari.xml" value="0.22010869565217392" />
+        <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/itinerari.xml" value="0.264" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/layout/piatti.xml" value="0.2" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/mipmap-anydpi-v26/app_icon.xml" value="0.2595" />
         <entry key="..\:/Users/ifoa/Documents/GitHub/projectA/progetto/app/src/main/res/mipmap-anydpi-v26/app_icon_round.xml" value="0.1" />

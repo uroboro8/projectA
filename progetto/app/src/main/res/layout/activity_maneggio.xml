@@ -71,12 +71,12 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:fontFamily="cursive"
+                        android:fontFamily="@font/quando"
                         android:gravity="center"
                         android:text="Esplora la nostra terra nella sua forma più autentica.\n\nProva la suggestiva esperienza dell’equitazione al nostro maneggio La Collina al Sole."
                         android:textAlignment="center"
                         android:textColor="#000000"
-                        android:textSize="28sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <androidx.cardview.widget.CardView
@@ -114,11 +114,11 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:fontFamily="cursive"
+                        android:fontFamily="@font/quando"
                         android:gravity="center"
                         android:text="Esplora le meraviglie della nostra terra a cavallo scegliendo tra le numerose escursioni, su itinerari che attraversano la natura ed i paesaggi che solo il cuore autentico della Toscana riesce ad offrire."
                         android:textColor="#000000"
-                        android:textSize="28sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <androidx.cardview.widget.CardView
@@ -156,11 +156,11 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:fontFamily="cursive"
+                        android:fontFamily="@font/quando"
                         android:gravity="center"
                         android:text="Anche i principianti, potranno vivere l’esperienza a cavallo nella nostra arena, attraverso le lezioni private degli istruttori più esperti.\n\nI più piccoli vivranno il loro sogno passeggiando sulla sella dei nostri dolcissimi pony."
                         android:textColor="#000000"
-                        android:textSize="28sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <androidx.cardview.widget.CardView

@@ -13,13 +13,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
-        android:fontFamily="cursive"
+        android:fontFamily="@font/alex_brush"
         android:gravity="center"
         android:text="Contatti"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/black"
+        android:textColor="@color/grey"
         android:textSize="40sp"
+        android:paddingTop="5sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,6 +89,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8sp"
                                 android:text="0588 33215"
+                                android:fontFamily="@font/quando"
+                                android:textStyle="bold"
                                 android:textColor="@color/black" />
                         </LinearLayout>
 
@@ -113,6 +116,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8sp"
+                                android:fontFamily="@font/quando"
+                                android:textStyle="bold"
                                 android:text="collinaalsole@gmail.com"
                                 android:textColor="@color/black" />
                         </LinearLayout>

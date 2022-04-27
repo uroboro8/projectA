@@ -73,6 +73,7 @@
                         android:gravity="center"
                         android:layout_marginTop="16dp"
                         android:text="Titolo Itinerario"
+                        android:fontFamily="@font/quando"
                         android:textColor="#000000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -101,7 +102,7 @@
                                     android:layout_width="30sp"
                                     android:layout_height="30sp"
                                     android:scaleType="centerCrop"
-                                    android:src="@drawable/ic_baseline_access_time_24" />
+                                    android:src="@drawable/ic_time" />
 
                                 <TextView
                                     android:id="@+id/durationItinerario"
@@ -109,6 +110,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="8sp"
                                     android:text="Duration"
+                                    android:fontFamily="@font/quando"
                                     android:textColor="@color/black"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
@@ -125,13 +127,14 @@
                                     android:layout_width="30sp"
                                     android:layout_height="30sp"
                                     android:scaleType="centerCrop"
-                                    android:src="@drawable/ic_baseline_euro_24" />
+                                    android:src="@drawable/ic_sell" />
 
                                 <TextView
                                     android:id="@+id/priceItinerario"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Price"
+                                    android:fontFamily="@font/quando"
                                     android:layout_marginLeft="8sp"
                                     android:textColor="@color/black"
                                     android:textSize="15sp"
@@ -149,13 +152,14 @@
                                     android:layout_width="30sp"
                                     android:layout_height="30sp"
                                     android:scaleType="centerCrop"
-                                    app:srcCompat="@drawable/ic_baseline_accessibility_new_24" />
+                                    app:srcCompat="@drawable/ic_family" />
 
                                 <TextView
                                     android:id="@+id/categoryItinerario"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Category"
+                                    android:fontFamily="@font/quando"
                                     android:layout_marginLeft="8sp"
                                     android:textColor="@color/black"
                                     android:textSize="15sp"
@@ -174,6 +178,7 @@
                         android:layout_marginTop="24dp"
                         android:layout_marginLeft="8sp"
                         android:layout_marginRight="8sp"
+                        android:fontFamily="@font/quando"
                         android:text="Descrizione dell'itinerario"
                         android:textColor="@color/black"
                         android:textSize="20sp" />

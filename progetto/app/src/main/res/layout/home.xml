@@ -8,6 +8,7 @@
     android:background="@color/grey"
     tools:context=".FragmentHome">
 
+
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -70,6 +71,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:fontFamily="@font/quando"
                                 android:gravity="center"
                                 android:text="Il Maneggio"
                                 android:textColor="@color/black"
@@ -106,6 +108,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="4"
                                 android:gravity="center"
+                                android:fontFamily="@font/quando"
                                 android:text="I Panorami"
                                 android:textColor="@color/black"
                                 android:textStyle="bold" />
@@ -154,6 +157,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="4"
                                 android:gravity="center"
+                                android:fontFamily="@font/quando"
                                 android:text="Gli Itinerari"
                                 android:textColor="@color/black"
                                 android:textStyle="bold" />
@@ -190,6 +194,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center"
                                 android:text="I Nostri Piatti"
+                                android:fontFamily="@font/quando"
                                 android:textColor="@color/black"
                                 android:textStyle="bold" />
 
@@ -208,12 +213,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
-        android:fontFamily="cursive"
+        android:fontFamily="@font/alex_brush"
         android:gravity="center"
         android:text="La Collina al Sole"
-        android:textColor="@color/black"
+        android:textColor="@color/grey"
         android:textSize="40sp"
         android:textStyle="bold"
+        android:paddingTop="5sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

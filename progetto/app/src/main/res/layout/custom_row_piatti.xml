@@ -37,6 +37,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/quando"
                 tools:text="item" />
 
             <ImageView
